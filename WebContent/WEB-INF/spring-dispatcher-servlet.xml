@@ -26,4 +26,8 @@
 		</property>
 	</bean>
 	
+	<!-- mapping resources folder -->
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:annotation-driven />
+
 </beans>

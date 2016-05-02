@@ -1,4 +1,5 @@
 <%@ tag language="java" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <head>
 <meta charset="utf-8">
@@ -11,17 +12,19 @@
 
 <title><jsp:doBody /></title>
 
+<!-- Map css files using tag spring:url -->
+
 <!-- Bootstrap core CSS -->
-<link href="/SpringMVCBlog/css/bootstrap.min.css" rel="stylesheet">
-<!-- <link href="/BLOG/css/bootstrap.min.css" rel="stylesheet"> -->
+<spring:url value="/resources/bootstrap.min.css" var="bootstrapminCSS" />
+<link href="${bootstrapminCSS}" rel="stylesheet" />
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<link href="/SpringMVCBlog/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-<!-- <link href="/BLOG/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
+<spring:url value="/resources/ie10-viewport-bug-workaround.css" var="bugworkaroundCSS" />
+<link href="${bugworkaroundCSS}" rel="stylesheet" />
 
 <!-- Custom styles for this template -->
-<link href="/SpringMVCBlog/css/blog.css" rel="stylesheet">
-<!-- <link href="/BLOG/css/blog.css" rel="stylesheet"> -->
+<spring:url value="/resources/blog.css" var="blogCSS" />
+<link href="${blogCSS}" rel="stylesheet" />
 
 <!-- JQuery -->
 <script
