@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
-
 import models.HomeViewModel;
 
 @Controller
@@ -19,7 +17,7 @@ public class HomepageController {
 	@RequestMapping (value="/home", method= RequestMethod.GET)
 	
 	//create model for view HOME.JSP
-	//@ModelAttribute creates HomeViewModel object and autowire params from 
+	//@ModelAttribute creates HomeViewModel object and autowire params from HOME.JSP 
 	//@RequestParam gets the value of "page" from URL and set initial value to 1
 	public ModelAndView createHome (@ModelAttribute(value="hvm") HomeViewModel hvm,
 									@RequestParam (value="page", defaultValue="1") int page) {

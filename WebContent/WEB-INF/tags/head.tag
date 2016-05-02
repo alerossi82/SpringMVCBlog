@@ -12,18 +12,20 @@
 <title><jsp:doBody /></title>
 
 <!-- Bootstrap core CSS -->
-<link href="/BLOG/css/bootstrap.min.css" rel="stylesheet">
+<link href="/SpringMVCBlog/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="/BLOG/css/bootstrap.min.css" rel="stylesheet"> -->
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<link href="/BLOG/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+<link href="/SpringMVCBlog/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+<!-- <link href="/BLOG/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
 
 <!-- Custom styles for this template -->
-<link href="/BLOG/css/blog.css" rel="stylesheet">
+<link href="/SpringMVCBlog/css/blog.css" rel="stylesheet">
+<!-- <link href="/BLOG/css/blog.css" rel="stylesheet"> -->
 
 <!-- JQuery -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
-	
 </script>
 
 <script>

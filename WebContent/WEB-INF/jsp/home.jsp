@@ -20,6 +20,7 @@
 				<c:forEach begin="1" end="${articolo.voto}">
 					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 				</c:forEach>
+				
 				<!-- remaining stars are empty -->
 				<c:forEach begin="1" end="${5-articolo.voto}">
 					<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
@@ -50,22 +51,21 @@
 		<!-- if page 1, show button Next only -->
 		<!-- if last page, show button Previous only -->
 		<!-- otherwise, show both buttons -->
-		<c:choose>
-			<c:when test="${hvm.currentPage<=1 }">
-				<!-- get current page from controller,increase it by 1 and forward to controller -->
-				<li><a href="/SpringMVCBlog/home?page=${hvm.currentPage+1}">Next</a></li>
-			</c:when>
 
-			<c:when test="${hvm.currentPage>=hvm.totPages}">
+		<c:choose>
+			<c:when test="${hvm.currentPage>1}">
 				<!-- get current page from controller,decrease it by 1 and forward to controller -->
 				<li><a href="/SpringMVCBlog/home?page=${hvm.currentPage-1}">Previous</a></li>
 			</c:when>
-
-			<c:otherwise>
-				<li><a href="/SpringMVCBlog/home?page=${hvm.currentPage-1}">Previous</a></li>
-				<li><a href="/SpringMVCBlog/home?page=${hvm.currentPage+1}">Next</a></li>
-			</c:otherwise>
 		</c:choose>
+
+		<c:choose>
+			<c:when test="${hvm.currentPage<hvm.totPages}">
+				<!-- get current page from controller,increase it by 1 and forward to controller -->
+				<li><a href="/SpringMVCBlog/home?page=${hvm.currentPage+1}">Next</a></li>
+			</c:when>
+		</c:choose>
+
 	</ul>
 	</nav>
 </t:TEMPLATE>

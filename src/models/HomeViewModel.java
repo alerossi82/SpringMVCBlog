@@ -2,6 +2,7 @@ package models;
 
 import java.sql.SQLException;
 import java.util.List;
+import javax.validation.constraints.Size;
 import DAO.DAOArea;
 import DAO.DAOArticolo;
 import DAO.DAOArticoloRM;
@@ -17,7 +18,6 @@ import beans.Voto;
 
 public class HomeViewModel {
 	
-	private int currentPage; // page number from Home page
 	private DAOArticoloRM DAOrm;
 	private ArticoloRM articolo; 
 	private int skip; // number of articles to skip in SQL table Articoli
@@ -26,12 +26,13 @@ public class HomeViewModel {
 	private List<ArticoloRM> listaAllArticoli; //list of ID and restaurant name for all articles
 	private int totArticoliinDB; 
 	private int totPages; 
+	private int currentPage; // page number from Home page
 	private boolean showListOfAllArticles; //if true, displays list of all articles in sidebar
 	
 	public HomeViewModel() throws SQLException {
 		
 		//articles to display in each page
-		take=2;
+		take=1;
 		
 		DAOrm = new DAOArticoloRM();
 		
