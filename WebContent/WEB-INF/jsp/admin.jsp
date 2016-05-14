@@ -8,23 +8,22 @@
 <t:ADMIN>
 
 	<p>
-		<a href="${pageContext.request.contextPath}/newAccount.jsp"><h3>CREATE
-				NEW USER</h3></a>
+		<a href="${pageContext.request.contextPath}/newAccount.jsp"> <h3>CREATE NEW USER</h3></a>
 	</p>
+	
 	<!-- link to ControllerArticleManager for new article -->
 	<p>
-		<a href="/BLOG/ControllerArticleManager?IDarticolo=0"><h3>INSERT
-				NEW ARTICLE</h3></a>
+		<a href="/SpringMVCBlog/ArticleManager?IDarticolo=0"> <h3>INSERT NEW ARTICLE</h3></a>
 	</p>
 
 	<!-- loop through listIDRistorante (from ControllerSelectArticle) to create a table of all articles in the DB
 and a link to forward each IDarticolo to ControllerArticleManager.Get -->
 	<table>
-		<c:forEach items="${listIDRistorante}" var="art">
+		<c:forEach items="${hvm.listaAllArticoli}" var="art">
 			<tr>
 				<td>${art.ristorante}</td>
 				<td><a
-					href="/BLOG/ControllerArticleManager?IDarticolo=${art.id}">edit</a></td>
+					href="/SpringMVCBlog/ArticleManager?IDarticolo=${art.id}">edit</a></td>
 			</tr>
 		</c:forEach>
 	</table>

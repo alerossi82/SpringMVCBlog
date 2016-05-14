@@ -31,12 +31,13 @@ public class DAOArticolo {
 	}
 
 	// this method returns a new Article for a given ID using the SELECT query
-	// it is called in the servlet ControllerHome
 	public Articolo select(int ID) throws SQLException {
+		
 		// set and call the query
 		PreparedStatement statement = conn.prepareStatement(select);
 		statement.setInt(1, ID);
 		ResultSet rs = statement.executeQuery();
+		
 		// create new Articolo and set attributes
 		Articolo art = new Articolo();
 		while (rs.next()) {
@@ -54,13 +55,14 @@ public class DAOArticolo {
 	}
 	
 	//returns a List of Articoli using the selectTop query
-	//it is called in the ControllerHome servlet
 	public List<Articolo> selectTop(int fetch) throws SQLException{
+		
 		//set and execute the query
 		PreparedStatement statement = conn.prepareStatement(selectTop);
 		statement.setInt(1, fetch);
 		ResultSet rs=statement.executeQuery();
 		List<Articolo> listArticoli=new ArrayList<Articolo>();
+		
 		//create a new Articolo for each row selected and add it to listArticoli
 		while(rs.next()){
 			Articolo art=new Articolo();
@@ -80,9 +82,10 @@ public class DAOArticolo {
 	
 	// inserisce nel DB i dati inviati dalla View newEditArticolo.jsp
 	public void insert(Articolo art) throws SQLException {
-		// call connect method
+		
 		// imposto query INSERT
 		PreparedStatement statement = conn.prepareStatement(insert);
+		
 		// imposto parametri di INSERT utilizzando i getter del bean articolo
 		statement.setString(1, art.getRistorante());
 		statement.setInt(2, art.getIDArea());
