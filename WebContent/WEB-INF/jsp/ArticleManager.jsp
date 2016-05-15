@@ -41,7 +41,7 @@
 				<td><label>Location</label></td>
 				<td><select name="location">
 						<!-- for each object in nea.listArea, checks the ID and adds the name to the select menu
-						if the ID of object in listArea matches the IDArea of the article, it is set as selected -->
+if the ID of object in listArea matches the IDArea of the article, it is set as selected -->
 						<c:forEach var="area" items="${nea.listaArea}">
 							<c:choose>
 								<c:when test="${area.ID==nea.articolo.IDArea}">
@@ -55,9 +55,8 @@
 						</c:forEach>
 				</select></td>
 			</tr>
-			
 			<!-- for each object in nea.listCucina, checks the ID and adds the name to the select menu
-			if the ID of object in listCucina matches the IDCucina of the article, it is set as selected -->
+if the ID of object in listCucina matches the IDCucina of the article, it is set as selected -->
 			<tr>
 				<td><label> Cuisine</label></td>
 				<td><select name="cucina">
@@ -74,9 +73,8 @@
 						</c:forEach>
 				</select></td>
 			</tr>
-			
 			<!-- for each object in nea.listPrezzo, checks the ID and adds the name to the select menu
-			if the ID of object in listPrezzo matches the IDPrezzo of the article, it is set as selected -->
+if the ID of object in listPrezzo matches the IDPrezzo of the article, it is set as selected -->
 			<tr>
 				<td><label> Price </label></td>
 				<td><select name="prezzo">
@@ -115,9 +113,8 @@
 		<table border="0">
 			<tr>
 				<td><label> Stars </label></td>
-				
 				<!-- for each object in nea.listVoto, checks the ID and adds the name to the select menu
-				if the ID of the object in listVoto matches the IDVoto of the article, it is set as selected -->
+if the ID of the object in listVoto matches the IDVoto of the article, it is set as selected -->
 				<td><select name="voto">
 						<c:forEach var="voto" items="${nea.listaVoto}">
 							<c:choose>

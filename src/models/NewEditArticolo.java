@@ -17,7 +17,6 @@ import beans.Prezzo;
 import beans.Voto;
 
 public class NewEditArticolo {
-	
 	private Articolo articolo;
 	private List<Area> ListaArea;
 	private List<Cucina> ListaCucina;
@@ -25,8 +24,13 @@ public class NewEditArticolo {
 	private List<Voto> ListaVoto;
 	private List<String> ListaImg;
 
-	// constructor
-	public NewEditArticolo() throws SQLException {
+	// creates an object containing all data from one line of the Articolo table
+	// (specified by the ID) and all items from Area, Cucina, Prezzo and Voto
+	// tables
+	public NewEditArticolo(int ID) throws SQLException {
+
+		DAOArticolo DAOart = new DAOArticolo();
+		articolo = DAOart.select(ID);
 
 		DAOArea DAOa = new DAOArea();
 		ListaArea = DAOa.getArea();
@@ -41,11 +45,9 @@ public class NewEditArticolo {
 		ListaVoto = DAOv.getVoto();
 
 		ListaImg = new ArrayList<String>();
-		
 		// create array containing the path of all files in folder img
 		File folder = new File("C:/Users/Alessandro/workspace/BLOG/WebContent/img");
 		File[] arrayImg = folder.listFiles();
-		
 		// get the name of each file in the array and add it to ListaImg
 		for (File f : arrayImg) {
 			String fileName=f.getName();
@@ -53,24 +55,7 @@ public class NewEditArticolo {
 		}
 
 	}
-	
-	//get all attributes for a specific article from the DB
-	public void getArticolo(int IDarticolo) {
 
-		DAOArticolo DAOart = new DAOArticolo();
-
-		try {
-			articolo = DAOart.select(IDarticolo);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("unable to generate DAO for this article");
-		}
-	}
-	
-	
-	//ACCESSORS
-	
 	public Articolo getArticolo() {
 		return articolo;
 	}
@@ -118,5 +103,5 @@ public class NewEditArticolo {
 	public void setListaImg(List<String> listaImg) {
 		ListaImg = listaImg;
 	}
-	
+
 }
