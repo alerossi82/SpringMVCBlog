@@ -23,7 +23,7 @@
 			<c:forEach var="articolo" items="${hvm.listaAllArticoli}" begin="0"
 				end="1">
 				<p>
-					<a href="/SpringMVCBlog/viewArticle?ID=${articolo.id}">
+					<a href="${pageContext.request.contextPath}/viewArticle?ID=${articolo.id}">
 						${articolo.ristorante}</a>
 				</p>
 			</c:forEach>
@@ -36,7 +36,7 @@
 			<c:forEach var="articolo" items="${hvm.listaAllArticoli}" begin="2"
 				end="${hvm.totArticoliinDB}">
 				<p>
-					<a href="/SpringMVCBlog/viewArticle?ID=${articolo.id}">
+					<a href="${pageContext.request.contextPath}/viewArticle?ID=${articolo.id}">
 						${articolo.ristorante}</a>
 				</p>
 			</c:forEach>

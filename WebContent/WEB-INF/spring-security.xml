@@ -7,11 +7,24 @@
     http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
 	<!-- In the <http> element, we declare which URL pattern will be intercepted 
-		by Spring security filter, using the intercept-url element. As per this configuration, 
-		all the URL patterns /admin** are secured, and only the users having role 
+		by Spring Security filter, using the intercept-url element. As per this configuration, 
+		all the URL patterns /admin** and /ArticleManager** are secured, and only the users having role 
 		ROLE_ADMIN can be authorized to access these URLs -->
 	<http auto-config="true">
 		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/ArticleManager**" access="hasRole('ROLE_ADMIN')" />
+
+	<!-- This code invokes the login page, which will 
+		accept username and password as Http request parameters. 
+		If username and password are correct, forwards to /admin URL.
+		If username or password are not correct, forward to /login?error -->
+		<form-login login-page="/login" 
+					default-target-url="/admin" 
+					username-parameter="username"
+					password-parameter="password" 
+					authentication-failure-url="/login?error"/>
+					<!-- authentication-failure-url="/Access_Denied" -->
+		
 		<csrf disabled="true" />
 	</http>
 

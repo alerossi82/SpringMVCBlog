@@ -7,24 +7,24 @@
 
 <t:head>Article manager</t:head>
 <t:ADMIN>
-	<!-- populates the form using the object nea (NewEditArticolo) from servlet ControllerArticleManager -->
-	<!-- the parameteres are then passed to the servlet ControllerArticleManager -->
-	<form action="/BLOG/ControllerArticleManager" method="post">
+	<!-- populates the form using the object nea (NewEditArticolo) from servlet ArticleManagerController -->
+	<!-- the parameteres are then passed back to the servlet ArticleManagerController -->
+	<form action="${pageContext.request.contextPath}/editArticle" method="POST">
 
-		<input type="hidden" name="action" value="nuovoArticolo">
+		<input type="hidden" name="action" value="nuovoArticolo" modelAttribute="articolo1">
 
 		<table border="0">
 			<tr>
-				<!-- inputs the ID of the article in the cell; if the article was created with ID 0 (new article), the cell is left blank -->
+				<!-- inputs the ID of the article in the cell; if the article was created with ID 0 (new article), the cell is blank -->
 				<c:choose>
 					<c:when test="${nea.articolo.id>0}">
 						<td>Article ID</td>
-						<td><input name="ID" size="4" placeholder="ID articolo"
+						<td><input name="id" size="4" placeholder="ID articolo"
 							value="${nea.articolo.id}" readonly="readonly" /></td>
 					</c:when>
 					<c:otherwise>
 						<td>Article ID</td>
-						<td><input name="ID" size="4" placeholder="ID articolo"
+						<td><input name="id" size="4" placeholder="ID articolo"
 							value="0" readonly="readonly" /></td>
 					</c:otherwise>
 				</c:choose>
@@ -32,14 +32,14 @@
 
 			<tr>
 				<td>Restaurant</td>
-				<td><input name="restaurant" size="50"
+				<td><input name="ristorante" size="50"
 					placeholder="Insert restaurant name"
 					value="${nea.articolo.ristorante}" /></td>
 			</tr>
 
 			<tr>
 				<td><label>Location</label></td>
-				<td><select name="location">
+				<td><select name="IDArea">
 						<!-- for each object in nea.listArea, checks the ID and adds the name to the select menu
 						if the ID of object in listArea matches the IDArea of the article, it is set as selected -->
 						<c:forEach var="area" items="${nea.listaArea}">
@@ -60,7 +60,7 @@
 			if the ID of object in listCucina matches the IDCucina of the article, it is set as selected -->
 			<tr>
 				<td><label> Cuisine</label></td>
-				<td><select name="cucina">
+				<td><select name="IDCucina">
 						<c:forEach var="cucina" items="${nea.listaCucina}">
 							<c:choose>
 								<c:when test="${cucina.ID==nea.articolo.IDCucina}">
@@ -79,7 +79,7 @@
 			if the ID of object in listPrezzo matches the IDPrezzo of the article, it is set as selected -->
 			<tr>
 				<td><label> Price </label></td>
-				<td><select name="prezzo">
+				<td><select name="IDPrezzo">
 						<c:forEach var="prezzo" items="${nea.listaPrezzo}">
 							<c:choose>
 								<c:when test="${prezzo.ID==nea.articolo.IDPrezzo}">
@@ -108,9 +108,9 @@
 			</tr>
 		</table>
 
-		<textarea name="recensione">
-		${nea.articolo.articolo}
- 	</textarea>
+		<textarea name="articolo">
+			${nea.articolo.articolo}
+ 		</textarea>
 
 		<table border="0">
 			<tr>
@@ -118,7 +118,7 @@
 				
 				<!-- for each object in nea.listVoto, checks the ID and adds the name to the select menu
 				if the ID of the object in listVoto matches the IDVoto of the article, it is set as selected -->
-				<td><select name="voto">
+				<td><select name="IDVoto">
 						<c:forEach var="voto" items="${nea.listaVoto}">
 							<c:choose>
 								<c:when test="${voto.ID==nea.articolo.IDVoto}">
@@ -168,7 +168,7 @@
 	</form>
 
 	<!-- button BACK moves back to view admin.jsp-->
-	<form action="/BLOG/ControllerAdmin">
+	<form action="${pageContext.request.contextPath}/admin">
 	<table>
 			<tr>
 				<td><input type="submit" value="BACK"></td>
@@ -176,4 +176,3 @@
 	</table>
 	</form>
 </t:ADMIN>
-

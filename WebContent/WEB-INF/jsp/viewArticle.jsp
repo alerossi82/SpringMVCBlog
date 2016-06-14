@@ -40,10 +40,10 @@
 	</div>
 	<!-- /.blog-post -->
 
-	<!-- link to homepage -->
+	<!-- Back button, return to the home page stored in session -->
 	<nav>
 	<ul class="pager">
-		<li><a href="/BLOG/ControllerHome">Back</a></li>
+		<li><a href="${pageContext.request.contextPath}/home?page=${sessionScope.page}">Back</a></li>
 	</ul>
 	</nav>
 
