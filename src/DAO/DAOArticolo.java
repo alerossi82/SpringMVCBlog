@@ -17,12 +17,16 @@ public class DAOArticolo {
 
 	// SQL query to SELECT all data from a single row in table Articoli
 	private String select = "SELECT * FROM dbo.Articolo WHERE ID=?";
+	
 	//SQL query to SELECT all data from top ? rows in table Articoli
 	private String selectTop = "SELECT TOP (?) * FROM dbo.Articolo ORDER BY ID desc";
+	
 	// SQL query to INSERT new row in table Articoli
-	private String insert = "INSERT INTO [dbo].[Articolo] VALUES (?, ?, ?, ?, ?, ?,?,?)";
+	private String insert = "INSERT INTO [BLOG].[dbo].[Articolo] VALUES (?,?,?,?,?,?,?,?)";
+	
 	//SQL query to UPDATE a row in table Articoli
 	private String update = " UPDATE [dbo].[Articolo] SET Ristorante=?, IDArea=?, IDCucina=?, IDPrezzo=?, Data=?, Articolo=?, IDVoto=?, Foto=? WHERE ID=?";
+	
 	//SQL query to DELETE a row in table Articoli
 	private String delete="DELETE FROM [dbo].[Articolo] WHERE ID=?";
 	

@@ -11,7 +11,13 @@
 	<!-- cicle through all Articolo objects in listaArticolo -->
 	<c:forEach var="articolo" items="${hvm.listaArticoliRM}">
 		<div class="blog-post">
-			<h2 class="blog-post-title">${articolo.ristorante}</h2>
+		
+		<!-- click on article title to open the article -->
+			<a
+				href="${pageContext.request.contextPath}/viewArticle?ID=${articolo.id}">
+				<h2 class="blog-post-title">${articolo.ristorante}</h2>
+			</a>
+			
 			<p class="blog-post-meta">${articolo.data}</p>
 
 			<p class="voto">

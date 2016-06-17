@@ -21,9 +21,9 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	
-	<script src="/BLOG/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script src="/BLOG/js/ie10-viewport-bug-workaround.js"></script>
+	<script src="${pageContext.request.contextPath}/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
 
