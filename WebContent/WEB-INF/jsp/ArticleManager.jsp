@@ -113,14 +113,10 @@ if the ID of object in listPrezzo matches the IDPrezzo of the article, it is set
 		<table border="0">
 			<tr>
 				<td><label> Stars </label></td>
-				<!-- for each object in nea.listVoto, checks the ID and adds the name to the select menu
-<<<<<<< HEAD
-if the ID of the object in listVoto matches the IDVoto of the article, it is set as selected -->
-				<td><select name="voto">
-=======
-				if the ID of the object in listVoto matches the IDVoto of the article, it is set as selected -->
-				<td><select name="IDVoto">
->>>>>>> tmp
+				
+				<!-- for each object in nea.listVoto, checks the ID and adds the name to the select menu -->
+				<!-- if the ID of the object in listVoto matches the IDVoto of the article, it is set as selected -->
+				<td> <select name="IDVoto">
 						<c:forEach var="voto" items="${nea.listaVoto}">
 							<c:choose>
 								<c:when test="${voto.ID==nea.articolo.IDVoto}">
@@ -132,7 +128,7 @@ if the ID of the object in listVoto matches the IDVoto of the article, it is set
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
-				</select></td>
+				</select> </td>
 			</tr>
 
 			<tr>

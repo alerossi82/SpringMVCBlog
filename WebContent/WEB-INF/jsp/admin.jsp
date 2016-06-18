@@ -7,36 +7,28 @@
 <t:head>Articles list</t:head>
 <t:ADMIN>
 
-<<<<<<< HEAD
-	<p>
+<%-- 	<p>
 		<a href="${pageContext.request.contextPath}/newAccount.jsp"><h3>CREATE
 				NEW USER</h3></a>
-	</p>
-	<!-- link to ControllerArticleManager for new article -->
-	<p>
-		<a href="/BLOG/ControllerArticleManager?IDarticolo=0"><h3>INSERT
-				NEW ARTICLE</h3></a>
-=======
+	</p> --%>
+	
+	<!-- display update/insert/delete message -->
 	<p>${message}</p>
 	
 	<!-- link to ArticleManagerController for new article -->
 	<p>
 		<a href="${pageContext.request.contextPath}/ArticleManager?IDarticolo=0"> <h3>INSERT NEW ARTICLE</h3></a>
->>>>>>> tmp
 	</p>
 
-	<!-- loop through listIDRistorante (from ControllerSelectArticle) to create a table of all articles in the DB
-	and a link to forward each IDarticolo to ArticleManagerController.Get -->
+	<!-- from AdminController -->
+	<!-- cicle through hvm.listAllArticoli to generate list of all articles -->
+	<!-- for each article, create link to pass its ID to ArticleManagerController -->
 	<table>
-		<c:forEach items="${listIDRistorante}" var="art">
+		<c:forEach items="${hvm.listaAllArticoli}" var="art">
 			<tr>
 				<td>${art.ristorante}</td>
 				<td><a
-<<<<<<< HEAD
-					href="/BLOG/ControllerArticleManager?IDarticolo=${art.id}">edit</a></td>
-=======
 					href="${pageContext.request.contextPath}/ArticleManager?IDarticolo=${art.id}">edit</a></td>
->>>>>>> tmp
 			</tr>
 		</c:forEach>
 	</table>

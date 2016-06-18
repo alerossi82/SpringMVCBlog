@@ -29,7 +29,7 @@ public class AdminController {
 		
 		ModelAndView model= new ModelAndView("admin");
 		
-		//generate list of all articles in DB
+		//generate listaAllArticoli, which is an attribute of hvm
 		try {
 			hvm.generateListaAllArticoli();
 			

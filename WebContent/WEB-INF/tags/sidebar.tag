@@ -23,11 +23,8 @@
 			<c:forEach var="articolo" items="${hvm.listaAllArticoli}" begin="0"
 				end="1">
 				<p>
-<<<<<<< HEAD
 					<a href="/BLOG/ControllerDisplayArticle?ID=${articolo.id}">
-=======
 					<a href="${pageContext.request.contextPath}/viewArticle?ID=${articolo.id}">
->>>>>>> tmp
 						${articolo.ristorante}</a>
 				</p>
 			</c:forEach>
@@ -40,11 +37,8 @@
 			<c:forEach var="articolo" items="${hvm.listaAllArticoli}" begin="2"
 				end="${hvm.totArticoliinDB}">
 				<p>
-<<<<<<< HEAD
 					<a href="/BLOG/ControllerDisplayArticle?ID=${articolo.id}">
-=======
 					<a href="${pageContext.request.contextPath}/viewArticle?ID=${articolo.id}">
->>>>>>> tmp
 						${articolo.ristorante}</a>
 				</p>
 			</c:forEach>
