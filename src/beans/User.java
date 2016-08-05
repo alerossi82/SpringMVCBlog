@@ -1,11 +1,30 @@
 package beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table (name="User")
 public class User {
 	
+	//ATTRIBUTES
+	@Id
+	@GeneratedValue (strategy=GenerationType.IDENTITY)
+	@Column (name="ID")
+	private int ID;
+	
+	@Column (name="Email")
 	private String email;
+	
+	@Column (name="Password")
 	private String password;
 	
 	
+	//ACCESSORS
 	public String getEmail() {
 		return email;
 	}

@@ -1,42 +1,38 @@
 package DAO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
 import beans.Area;
 
 public class DAOArea {
-	
-	private Connection conn;
 
-	//SQL query to retrive all data from table Area
-	private String select = "SELECT * FROM [BLOG].[dbo].[Area] ORDER BY ID";
-	
-	
-	
-	
-	//create connection in the constructor
+	// SQL query to retrive all data from table Area
+	private String selectArea = "FROM Area ORDER BY ID";
+
 	public DAOArea() {
-		conn=ConnectionManager.getConnection();
+		
 	}
 
-	
-	//returns a List of all rows in the SQL table Area 
-	public List<Area> getArea() throws SQLException {
+	// returns a List of all rows in the SQL table Area
+	public List<Area> getArea() {
 		
-		PreparedStatement st = conn.prepareStatement(select);
-		ResultSet rs = st.executeQuery();
-		List<Area> listaAree = new ArrayList<Area>();
-		while (rs.next()) {
-			Area area1 = new Area();
-			area1.setID(rs.getInt("ID"));
-			area1.setNome(rs.getString("Nome"));
-			listaAree.add(area1);
-		}
+		// create session factory
+		SessionFactory factory = new Configuration().
+								 configure("hibernate.cfg.xml").addAnnotatedClass(Area.class).
+								 buildSessionFactory();
+
+		// create session
+		Session session1 = factory.getCurrentSession();
+		
+		session1.beginTransaction();
+
+		List<Area> listaAree = session1.createQuery(selectArea).getResultList();
+
+		session1.getTransaction().commit();
+		
 		return listaAree;
 	}
 }
