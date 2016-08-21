@@ -7,29 +7,47 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.Session;
+
 import beans.Prezzo;
 
 public class DAOPrezzo {
 	
-	private Connection conn;
-	private String select = "SELECT * FROM [BLOG].[dbo].[Prezzo] ORDER BY Nome";
+	//ATTRIBUTES
 	
+	Session session1;
+	private String select = "FROM Prezzo ORDER BY Nome";
+	
+	
+	
+	//METHODS
+	
+	//Constructor
 	public DAOPrezzo() {
-		conn=ConnectionManager.getConnection();
+		
 	}
 	
-	//creates an object for each line in the SQL table Prezzo and adds it to a list
-	public List<Prezzo> getPrezzo() throws SQLException{
-		PreparedStatement st=conn.prepareStatement(select);
-		ResultSet rs=st.executeQuery();
-		List<Prezzo> listPrezzo= new ArrayList<>();
-		while(rs.next()){
-			Prezzo prezzo1=new Prezzo();
-			prezzo1.setID(rs.getInt("ID"));
-			prezzo1.setNome(rs.getString("Nome"));
-			listPrezzo.add(prezzo1);
-		}
-		return listPrezzo;
+	
+	
+	//creates a list of all items from Prezzo table
+	public List<Prezzo> getPrezzo() {
 		
+		//create session
+		session1= SessionManager.createSession();
+		
+		//start session
+		session1.beginTransaction();
+		
+		//create query
+		List<Prezzo> list1= session1
+							.createQuery(select)
+							.getResultList();
+							
+		//execute query
+		session1.getTransaction().commit();
+		
+		//return list
+		return list1;
 	}
 }

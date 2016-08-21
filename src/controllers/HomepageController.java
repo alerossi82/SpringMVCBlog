@@ -2,7 +2,6 @@ package controllers;
 
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
-import org.apache.catalina.connector.Request;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;

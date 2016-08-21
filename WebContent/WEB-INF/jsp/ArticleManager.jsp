@@ -15,7 +15,7 @@
 
 		<table border="0">
 			<tr>
-				<!-- inputs the ID of the article in the cell; if the article was created with ID 0 (new article), the cell is blank -->
+				<!-- inputs the ID of the article in the cell; if the article was created with ID 0 (new article), the value is 0 -->
 				<c:choose>
 					<c:when test="${nea.articolo.id>0}">
 						<td>Article ID</td>
@@ -41,7 +41,7 @@
 				<td><label>Location</label></td>
 				<td><select name="IDArea">
 						<!-- for each object in nea.listArea, checks the ID and adds the name to the select menu
-if the ID of object in listArea matches the IDArea of the article, it is set as selected -->
+						if the ID of object in listArea matches the IDArea of the article, it is set as selected -->
 						<c:forEach var="area" items="${nea.listaArea}">
 							<c:choose>
 								<c:when test="${area.ID==nea.articolo.IDArea}">

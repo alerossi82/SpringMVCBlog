@@ -8,11 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
 import beans.Area;
 import beans.Articolo;
 import beans.ArticoloRM;
@@ -20,6 +18,8 @@ import beans.ArticoloRM;
 public class DAOArticolo {
 	
 	//ATTRIBUTES
+	
+	Session session1;
 	
 	// SQL query to SELECT all data from a single row in table Articoli
 	private String select = "FROM Articolo WHERE ID= :id";
@@ -43,32 +43,32 @@ public class DAOArticolo {
 	private String delete="DELETE FROM Articolo WHERE ID=?";
 	
 	
-	//CONSTRUCTOR
-	public DAOArticolo(){
-		
-	}
 	
 	
 	//METHODS
 	
-	// this method returns a new Article for a given ID using the SELECT query
+	// CONSTRUCTOR
+	public DAOArticolo() {
+
+		
+	}
+	
+	
+	
+	// this method returns an Article for a given ID using the SELECT query
 	// called in servlet ControllerHome
-	public List<Articolo> select(int id) {
-
+	public Articolo select(int id) {
+		
 		// create session
-		SessionFactory factory = new Configuration().
-								configure("hibernate.cfg.xml").
-								addAnnotatedClass(Articolo.class).
-								buildSessionFactory();
-
-		Session session1 = factory.getCurrentSession();
+		session1 = SessionManager.createSession();
 		
 		//run query select
 		session1.beginTransaction();
 		
-		List<Articolo> art = session1.createQuery(select)
-							.setParameter("id", id) //positional parameter
-							.getResultList();
+		Articolo art =  (Articolo) session1
+						.createQuery(select)
+						.setParameter("id", id) //positional parameter
+						.getSingleResult();
 	
 		session1.getTransaction().commit();
 		
@@ -81,12 +81,7 @@ public class DAOArticolo {
 	public List<Articolo> selectTop (int fetch){
 		
 		// create session
-		SessionFactory factory = new Configuration().
-										configure("hibernate.cfg.xml").
-										addAnnotatedClass(Articolo.class).
-										buildSessionFactory();
-
-		Session session1 = factory.getCurrentSession();
+		session1 = SessionManager.createSession();
 		
 		//run query selectTop
 		session1.beginTransaction();
@@ -106,12 +101,7 @@ public class DAOArticolo {
 	public void insert (Articolo art) {
 		
 		// create session
-		SessionFactory factory = new Configuration().
-								configure("hibernate.cfg.xml").
-								addAnnotatedClass(Articolo.class).
-								buildSessionFactory();
-		
-		Session session1 = factory.getCurrentSession();
+		session1 = SessionManager.createSession();
 		
 		//create new Article and set params
 		Articolo newArt=new Articolo();
@@ -134,15 +124,10 @@ public class DAOArticolo {
 	
 	//update a specific article in DB
 	public void update(Articolo art) {
-
-		// create session
-		SessionFactory factory = new Configuration()
-								.configure("hibernate.cfg.xml")
-								.addAnnotatedClass(Articolo.class)
-								.buildSessionFactory();
-
-		Session session1 = factory.getCurrentSession();
 		
+		// create session
+		session1 = SessionManager.createSession();
+
 		session1.beginTransaction();
 		
 		//get Articolo ID
@@ -166,15 +151,12 @@ public class DAOArticolo {
 		
 	}
 	
+	
+	//delete article
 	public void delete (Articolo art) {
 		
 		// create session
-		SessionFactory factory = new Configuration()
-				.configure("hibernate.cfg.xml")
-				.addAnnotatedClass(Articolo.class)
-				.buildSessionFactory();
-		Session session1 = factory.getCurrentSession();
-		
+		session1 = SessionManager.createSession();
 		session1.beginTransaction();
 		
 		//get article ID
@@ -187,5 +169,10 @@ public class DAOArticolo {
 		session1.delete(artToDelete);
 		session1.getTransaction().commit();
 	}
+	
+	
+	
+	
+
 
 }

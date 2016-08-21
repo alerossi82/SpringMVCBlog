@@ -22,17 +22,21 @@ public class ArticleManagerController {
 		ModelAndView model=new ModelAndView("ArticleManager");
 		
 		//get article based on ID number from URL
-		//if ID=0, creates a blank model
-		try {
-			NewEditArticolo nea= new NewEditArticolo(IDarticolo);
-			model.addObject("nea", nea);
-			
-		} 
+		//if ID=0, creates empty model (new article)
+
+			try {
+				NewEditArticolo nea = new NewEditArticolo(IDarticolo);
+				model.addObject("nea", nea);
+
+			}
+
+			catch (SQLException e) {
+				System.out.println("failed to generate model for article with ID " + IDarticolo);
+				e.printStackTrace();
+			}
+
 		
-		catch (SQLException e) {
-			System.out.println("failed to generate model for article with ID "+IDarticolo);
-			e.printStackTrace();
-		}
+		
 		
 		// check is user is logged in
 		model.addObject("user", GetLoggedinUser.getPrincipal());
@@ -62,7 +66,7 @@ public class ArticleManagerController {
 					System.out.println("new article was created");
 					return "redirect:/admin?insert";
 
-				} catch (SQLException e) {
+				} catch (Exception  e) {
 					System.out.println("failed to create new article");
 					e.printStackTrace();
 				}
@@ -76,7 +80,7 @@ public class ArticleManagerController {
 					System.out.println("article was updated");
 					return "redirect:/admin?update"; 
 
-				} catch (SQLException e) {
+				} catch (Exception  e) {
 					System.out.println("failed to update article");
 					e.printStackTrace();
 				}
@@ -93,7 +97,7 @@ public class ArticleManagerController {
 				System.out.println("article was deleted");
 				return "redirect:/admin?delete"; 
 
-			} catch (SQLException e) {
+			} catch (Exception  e) {
 				System.out.println("failed to delete article");
 				e.printStackTrace();
 			}

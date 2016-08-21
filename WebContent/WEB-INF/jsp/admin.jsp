@@ -7,9 +7,9 @@
 <t:head>Articles list</t:head>
 <t:ADMIN>
 
-<%-- 	<p>
-		<a href="${pageContext.request.contextPath}/newAccount.jsp"><h3>CREATE
-				NEW USER</h3></a>
+<%-- <p>
+		<a href="${pageContext.request.contextPath}/newAccount.jsp">
+		<h3>CREATE NEW USER</h3></a>
 	</p> --%>
 	
 	<!-- display update/insert/delete message -->
@@ -17,7 +17,8 @@
 	
 	<!-- link to ArticleManagerController for new article -->
 	<p>
-		<a href="${pageContext.request.contextPath}/ArticleManager?IDarticolo=0"> <h3>INSERT NEW ARTICLE</h3></a>
+		<a href="${pageContext.request.contextPath}/ArticleManager?IDarticolo=0"> 
+		<h3>INSERT NEW ARTICLE</h3> </a>
 	</p>
 
 	<!-- from AdminController -->
@@ -27,8 +28,7 @@
 		<c:forEach items="${hvm.listaAllArticoli}" var="art">
 			<tr>
 				<td>${art.ristorante}</td>
-				<td><a
-					href="${pageContext.request.contextPath}/ArticleManager?IDarticolo=${art.id}">edit</a></td>
+				<td> <a href="${pageContext.request.contextPath}/ArticleManager?IDarticolo=${art.id}"> edit</a> </td>
 			</tr>
 		</c:forEach>
 	</table>

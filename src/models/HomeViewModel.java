@@ -18,17 +18,25 @@ import beans.Voto;
 
 public class HomeViewModel {
 	
+	//ATTRIBUTES
+	
 	private DAOArticoloRM DAOrm;
 	private ArticoloRM articolo; 
-	private int skip; // number of articles to skip in SQL table Articoli
-	private int take; 
+	private int skip; // number of articles to skip table Articoli
+	private int take; //number of articles to retrieve from table Articoli
 	private List<ArticoloRM> ListaArticoliRM; //list of articles to display in Homepage
 	private List<ArticoloRM> listaAllArticoli; //list of ID and restaurant name for all articles
-	private int totArticoliinDB; 
-	private int totPages; 
+	private long totArticoliinDB; 
+	private long totPages; 
 	private int currentPage; // page number from Home page
 	private boolean showListOfAllArticles; //if true, displays list of all articles in sidebar
 	
+	
+	
+	
+	//METHODS
+	
+	//Constructor
 	public HomeViewModel() throws SQLException {
 		
 		//articles to display in each page
@@ -43,21 +51,27 @@ public class HomeViewModel {
 		totPages=totArticoliinDB/take;
 	}
 	
+	
+	
 	public void generateArticolo (int ID) throws SQLException{
 		articolo=DAOrm.getSingleArticolo(ID);
 	}
 	
-	//generate list of articles to display based on the page
-	public void generateListaArticoliRM(int page) throws SQLException{
+	
+	
+	//generate list of articles to display based on the page number
+	public void generateListaArticoliRM (int page) throws SQLException{
 		currentPage = page;
 		
 		//skip articles displayed in previous pages
 		skip = take*(currentPage-1); 
-		ListaArticoliRM = DAOrm.selectWithJoin(skip, take);
+		ListaArticoliRM = DAOrm.selectSkipAndTake(skip, take);
 	}
 	
+	
+	
 	public void generateListaAllArticoli() throws SQLException{
-		listaAllArticoli=DAOrm.getAllIDandRistorante();
+		listaAllArticoli=DAOrm.getAllArticles();
 	}
 	
 	
@@ -89,7 +103,7 @@ public class HomeViewModel {
 		this.skip = skip;
 	}
 
-	public int getTotArticoliinDB() {
+	public long getTotArticoliinDB() {
 		return totArticoliinDB;
 	}
 
@@ -105,7 +119,7 @@ public class HomeViewModel {
 		this.take = take;
 	}
 
-	public int getTotPages() {
+	public long getTotPages() {
 		return totPages;
 	}
 

@@ -2,12 +2,11 @@ package models;
 
 import java.sql.SQLException;
 import java.util.List;
-
 import DAO.DAOUser;
-import beans.User;
+import beans.Users;
 
 public class UserModel {
-	User user1;
+	Users user1;
 	String message;
 	DAOUser dao;
 
@@ -25,6 +24,7 @@ public class UserModel {
 		this.message = message;
 	}
 
+	
 	// validate new User
 	public boolean validate(String email, String password) {
 		if (email == "" || password == "") {
@@ -55,14 +55,18 @@ public class UserModel {
 	// check that the email from view newAccount.jsp does not exists already in
 	// the DB
 	public boolean checkEmail(String email) throws SQLException {
+		
 		boolean bool = true;
-		List<User> list = dao.selectAllEmails();
-		for (User u : list) {
-			String user = u.getEmail();
-			if (user.equals(email)) {
-				message = "a user with this name already exists";
+		
+		List<String> list = dao.selectAllEmails();
+		
+		for (String s: list) {
+			
+			if (s.equals(email)) {
+				message = "a user with this email already exists";
 				bool = false;
 				break;
+				
 			} else {
 				message = "this user is new";
 			}

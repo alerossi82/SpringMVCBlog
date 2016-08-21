@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="User")
-public class User {
+@Table (name="Users")
+public class Users {
 	
 	//ATTRIBUTES
 	@Id
@@ -24,10 +24,23 @@ public class User {
 	private String password;
 	
 	
+	//CONSTRUCTORS
+	
+	public Users(){
+		
+	}
+	
+	public Users(String email, String password) {
+		this.email = email;
+		this.password = password;
+	}
+	
+	
 	//ACCESSORS
 	public String getEmail() {
 		return email;
 	}
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}

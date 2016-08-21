@@ -7,29 +7,46 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.Session;
+
 import beans.Voto;
 
 public class DAOVoto {
-
-	private Connection conn;
-	private String select = "SELECT * FROM [BLOG].[dbo].[Voto] ORDER BY Nome";
+	
+	//ATTRIBUTES
+	
+	Session session1;
+	private String select = "FROM Voto ORDER BY Nome";
+	
+	
+	
+	//METHODS
 	
 	//constructor
 	public DAOVoto() {
-		conn=ConnectionManager.getConnection();
+		
 	}
 	
+	
+	
+	
+	
 	//generates a list containing an object for each line in the Voto table
-	public List<Voto> getVoto() throws SQLException{
-		PreparedStatement st=conn.prepareStatement(select);
-		ResultSet rs=st.executeQuery();
-		List<Voto>listVoti=new ArrayList<Voto>();
-		while(rs.next()){
-			Voto voto1=new Voto();
-			voto1.setID(rs.getInt("ID"));
-			voto1.setNome(rs.getString("Nome"));
-			listVoti.add(voto1);
-		}
+	public List<Voto> getVoto() {
+		
+		//create session
+		session1=SessionManager.createSession();
+		session1.beginTransaction();
+		
+		//create query
+		List<Voto> listVoti= session1
+							.createQuery(select)
+							.getResultList();
+		
+		session1.getTransaction().commit();
+		
+		//return results
 		return listVoti;
 		
 	}

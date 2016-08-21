@@ -7,54 +7,88 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import beans.User;
+import org.hibernate.Session;
+import beans.Users;
 
 public class DAOUser {
-
-	private Connection conn;
 	
-	private String selectUser = "Select * FROM [dbo].[User] WHERE Email=?";
-	private String insertUser = "INSERT INTO [dbo].[User] (Email, Password) VALUES (?, ?)";
-	private String selectAllUsers = "Select Email FROM [dbo].[User]";
-
-	// create connection in the constructor
+	//ATTRIBUTES
+	private String selectUser = "FROM Users WHERE Email= :email";
+	private String selectAllEmails = "Select email FROM Users";
+	
+	private Session session1;
+	
+	
+	// METHODS
+	// constructor
 	public DAOUser() {
-		conn=ConnectionManager.getConnection();
+
 	}
+	
+	
 
 	// return all emails from table User
-	public List<User> selectAllEmails() throws SQLException {
-		PreparedStatement stmt = conn.prepareStatement(selectAllUsers);
-		ResultSet rs = stmt.executeQuery();
-		List<User> listUsers = new ArrayList<User>();
-		while (rs.next()) {
-			User user1 = new User();
-			user1.setEmail(rs.getString("Email"));
-			listUsers.add(user1);
-		}
-		return listUsers;
+	public List<String> selectAllEmails()  {
+		
+		//create session
+		session1 = SessionManager.createSession();
+				
+		//create session
+		session1.beginTransaction();
+		
+		//create query
+		List<String> listEmails= session1
+							  .createQuery(selectAllEmails)
+						      .getResultList();
+		
+		session1.getTransaction().commit();
+		
+		//return results
+		return listEmails;
 	}
 
+	
+	
+	
+	
 	// insert new User in DB
-	public void insertUser(String email, String password) throws SQLException {
-		PreparedStatement stmt = conn.prepareStatement(insertUser);
-		// set params and execute query
-		stmt.setString(1, email);
-		stmt.setString(2, password);
-		stmt.executeUpdate();
+	public void insertUser(String email, String password) {
+		
+		//create session
+		session1 = SessionManager.createSession();
+		session1.beginTransaction();
+		
+		//create new object
+		Users user1= new Users (email, password);
+		
+		//save object
+		session1.save(user1);
+		
+		//commit transaction
+		session1.getTransaction().commit();
+		
 	}
 
+	
+	
+	
 	// return user details for a given email
-	public User returnUser(String email) throws SQLException {
-		PreparedStatement stmt;
-		User user1 = new User();
-			stmt = conn.prepareStatement(selectUser);
-			stmt.setString(1, email);
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				user1.setEmail(rs.getString("Email"));
-				user1.setPassword(rs.getString("Password"));
-			}
+	public Users returnUser(String email) {
+
+		// create session
+		session1 = SessionManager.createSession();
+		session1.beginTransaction();
+
+		// create query
+		Users user1 = (Users) session1
+					 .createQuery(selectUser)
+					 .setParameter("email", email) //set positional parameter
+					 .getSingleResult();
+		
+		session1.getTransaction().commit();
+		
+		//return results
 		return user1;
+
 	}
 }

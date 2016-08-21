@@ -10,7 +10,6 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
 import beans.Area;
 import beans.Articolo;
 import beans.ArticoloRM;
@@ -21,50 +20,58 @@ import beans.Voto;
 public class DAOArticoloRM {
 	
 	//ATTRIBUTES
+	
+	Session session1;
+	
 	//SQL queries
 	
-	// select Article based on ID
-	// IDArea, IDCucina, IDPrezzo and IDVoto are automatically joined with
-	// related tables based on annotations in class ArticoloRM
-	private String getArticolo= "FROM ArticoloRM  "
+	// select one ArticleRM based on ID
+	// IDArea, IDCucina, IDPrezzo and IDVoto are automatically joined with related tables based on annotations in class ArticoloRM
+	private String getArticolo= "FROM ArticoloRM  " //bean ArticoloRM is joined to table Articolo through annotation
 								+ "WHERE id= :id";
-
+	
+	// return all ArticlesRM from DB, ordered by the most recent
+	// IDArea, IDCucina, IDPrezzo and IDVoto are automatically joined with related tables based on annotations in class ArticoloRM
+	private String getAllArticles = "FROM ArticoloRM " // bean ArticoloRM is joined to table Articolo through annotation
+								  + "ORDER BY ID DESC";
+	
 	//return the tot. number of articles in DB
-	private String selectCount = "SELECT COUNT(*) "
-							   + "FROM Articolo";
-	
-	private String selectIDandRistorante = "SELECT ID,Ristorante "
-										 + "FROM Articolo "
-									     + "ORDER BY ID DESC";
-	
-	// take all fields from ? rows in Articoli, skipping (offset) previous ? rows
-	// table Articoli is joined with tables Cucina, Area, Prezzo and Voto
-	private String selectWithJoin = "SELECT Articolo.ID, Articolo.Ristorante, Area.Nome AS Area, Cucina.Nome AS Cucina, Prezzo.Nome AS Prezzo, Articolo.Data, Articolo.Articolo, Voto.Nome AS Voto, Articolo.Foto "
-			+ "FROM Articolo INNER JOIN Cucina "
-			+ "ON Articolo.IDCucina=Cucina.ID INNER JOIN Area "
-			+ "ON Articolo.IDArea=Area.ID INNER JOIN Prezzo "
-			+ "ON Articolo.IDPrezzo=Prezzo.ID INNER JOIN Voto " 
-			+ "ON Articolo.IDVoto=Voto.ID "
-			+ "ORDER BY Articolo.ID DESC " 
-			+ "OFFSET=:skip ROWS FETCH NEXT=:take ROWS ONLY";
-	
+	private String selectCount = "SELECT COUNT(*) FROM ArticoloRM";
 	
 	//METHODS
 	
-	//return a specific article 
+	//constructor
+	public DAOArticoloRM() {
+		
+	}
+	
+	
+	
+	// return tot. number of articles
+	public long getTotalCount() {
+		
+		//create session
+		session1=SessionManager.createSession();
+		session1.beginTransaction();
+		
+		//create query
+		long totalCount= (long) session1
+						.createQuery(selectCount)
+						.getSingleResult();
+		
+		//execute query
+		session1.getTransaction().commit();
+		
+		//return tot. articoli
+		return totalCount;
+	}
+	
+	
+	//returns one single article 
 	public ArticoloRM getSingleArticolo (int ID) {
 		
-		// create session
-		SessionFactory factory = new Configuration()
-								.configure("hibernate.cfg.xml")
-								.addAnnotatedClass(ArticoloRM.class)
-								.addAnnotatedClass(Cucina.class)
-								.addAnnotatedClass(Area.class)
-								.addAnnotatedClass(Prezzo.class)
-								.addAnnotatedClass(Voto.class)
-								.buildSessionFactory();
-		Session session1 = factory.getCurrentSession();
-				
+		//create session
+		session1=SessionManager.createSession();
 		session1.beginTransaction();
 		
 		//create get article query
@@ -77,56 +84,55 @@ public class DAOArticoloRM {
 		
 		return art;
 	}
-
-	// return number of all items in table Articolo
-	public int getTotalCount() throws SQLException {
-		int totalCount = 0;
-		PreparedStatement stmt = conn.prepareStatement(selectCount);
-		ResultSet rs = stmt.executeQuery();
-		while (rs.next()) {
-			totalCount = rs.getInt(1);
-		}
-		return totalCount;
+	
+	
+	
+	// returns list of all articles
+	public List<ArticoloRM> getAllArticles () {
+		
+		//create session
+		session1=SessionManager.createSession();
+		session1.beginTransaction();
+		
+		//create query
+		List<ArticoloRM> RestaurantsList =  session1
+								 			.createQuery(getAllArticles)
+								 			.getResultList();
+		
+		session1.getTransaction().commit();
+		
+		//return list
+		return RestaurantsList;
+		
 	}
-
-	// return list of all fields ID and Ristorante from table Articoli
-	public List<ArticoloRM> getAllIDandRistorante() throws SQLException {
-		PreparedStatement statement = conn.prepareStatement(selectIDandRistorante);
-		ResultSet rs = statement.executeQuery();
-		List<ArticoloRM> list = new ArrayList<ArticoloRM>();
-		while (rs.next()) {
-			ArticoloRM art = new ArticoloRM();
-			art.setId(rs.getInt("ID"));
-			art.setRistorante(rs.getString("Ristorante"));
-			list.add(art);
-		}
-		return list;
-	}
-
-	// returns a list of ArticoloRM objects using the selectWithJoin query
+	
+	
+	
+	
+	
+	
+	// returns a list of articles based on skip/take params
 	// skip/take define how many rows will be skipped and how many will be taken
-	public List<ArticoloRM> selectWithJoin(int skip, int take) throws SQLException {
-		// set and execute query
-		PreparedStatement statement = conn.prepareStatement(selectWithJoin);
-		statement.setInt(1, skip);
-		statement.setInt(2, take);
-		ResultSet rs = statement.executeQuery();
-		// create an ArticoloRM object for each selected row, set the attributes
-		// and add it to List<ArticoloRM>
-		List<ArticoloRM> listaArticoliRM = new ArrayList<ArticoloRM>();
-		while (rs.next()) {
-			ArticoloRM art = new ArticoloRM();
-			art.setId(rs.getInt("ID"));
-			art.setData(rs.getString("Data"));
-			art.setArticolo(rs.getString("Articolo"));
-			art.setRistorante(rs.getString("Ristorante"));
-			art.setArea(rs.getString("Area"));
-			art.setCucina(rs.getString("Cucina"));
-			art.setPrezzo(rs.getString("Prezzo"));
-			art.setVoto(rs.getInt("Voto"));
-			art.setFoto(rs.getString("Foto"));
-			listaArticoliRM.add(art);
-		}
-		return listaArticoliRM;
+	
+	public List<ArticoloRM> selectSkipAndTake(int skip, int take) {
+		
+		//create session
+		session1=SessionManager.createSession();
+		session1.beginTransaction();
+		
+		//create and execute query
+		List<ArticoloRM> listArticoliToDisplay=  session1
+												.createQuery(getAllArticles)
+												.setFirstResult(skip)//nr of results to skip
+												.setMaxResults(take)//nr of results to fetch
+												.getResultList();
+		
+		session1.getTransaction().commit();
+		
+		//return results
+		return listArticoliToDisplay;
+		
 	}
+	
+	
 }
