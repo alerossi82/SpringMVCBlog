@@ -15,15 +15,15 @@
 <!-- Map css files using tag spring:url -->
 
 <!-- Bootstrap core CSS -->
-<spring:url value="/resources/bootstrap.min.css" var="bootstrapminCSS" />
+<spring:url value="/resources/css/bootstrap.min.css" var="bootstrapminCSS" />
 <link href="${bootstrapminCSS}" rel="stylesheet" />
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<spring:url value="/resources/ie10-viewport-bug-workaround.css" var="bugworkaroundCSS" />
+<spring:url value="/resources/css/ie10-viewport-bug-workaround.css" var="bugworkaroundCSS" />
 <link href="${bugworkaroundCSS}" rel="stylesheet" />
 
 <!-- Custom styles for this template -->
-<spring:url value="/resources/blog.css" var="blogCSS" />
+<spring:url value="/resources/css/blog.css" var="blogCSS" />
 <link href="${blogCSS}" rel="stylesheet" />
 
 <!-- JQuery -->

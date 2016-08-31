@@ -32,8 +32,9 @@
 					<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
 				</c:forEach>
 			</p>
-
-			<img src="${pageContext.request.contextPath}/img/${articolo.foto}"
+			
+			<!-- add img from folder resources -->
+			<img src= "<c:url value="/resources/img/${articolo.foto}"/>"
 				style="width: 300px; float: left; margin-right: 20px;"
 				class="img-thumbnail">
 

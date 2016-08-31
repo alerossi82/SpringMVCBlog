@@ -7,7 +7,6 @@ import DAO.DAOArticolo;
 import DAO.DAOArticoloRM;
 import DAO.DAOCucina;
 import DAO.DAOPrezzo;
-import DAO.DAOUser;
 import DAO.DAOVoto;
 import beans.Area;
 import beans.Articolo;
@@ -23,9 +22,9 @@ public class prova {
 
 	public static void main(String[] args) {
 		
-		/*List<String> ListaImg= new ArrayList<String>();
+		List<String> ListaImg= new ArrayList<String>();
 		
-		File folder = new File("C:/Users/Ale/workspace/BLOG/WebContent/img");
+		File folder = new File("C:/Users/Ale/workspace/SpringMVCBlog/WebContent/resources/img");
 		File[] arrayImg = folder.listFiles();
 		for (File f : arrayImg) {
 			String fileName=f.getName();
@@ -34,11 +33,11 @@ public class prova {
 		
 		for (String s: ListaImg) {
 			System.out.println(s);
-		}*/
+		}
 		
-		DAOArticolo dao= new DAOArticolo();
+		/*DAOArticolo dao= new DAOArticolo();
 		Articolo art=dao.select(4);
-		System.out.println(art.getArticolo());
+		System.out.println(art.getArticolo());*/
 	}
 }
 

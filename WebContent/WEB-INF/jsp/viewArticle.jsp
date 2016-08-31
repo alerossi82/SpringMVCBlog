@@ -22,7 +22,7 @@
 			</c:forEach>
 		</p>
 
-		<img src="${pageContext.request.contextPath}/img/${hvm.articolo.foto}"
+		<img src="${pageContext.request.contextPath}/resources/img/${hvm.articolo.foto}"
 			style="width: 300px; float: left; margin-right: 20px;"
 			class="img-thumbnail">
 

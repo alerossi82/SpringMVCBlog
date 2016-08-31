@@ -1,5 +1,6 @@
 package DAO;
 
+import org.apache.catalina.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -8,7 +9,6 @@ import beans.Articolo;
 import beans.ArticoloRM;
 import beans.Cucina;
 import beans.Prezzo;
-import beans.Users;
 import beans.Voto;
 
 
@@ -28,7 +28,7 @@ public class SessionManager {
 							.addAnnotatedClass(Area.class)
 							.addAnnotatedClass(Prezzo.class)
 							.addAnnotatedClass(Voto.class)
-							.addAnnotatedClass(Users.class)
+							.addAnnotatedClass(User.class)
 							.buildSessionFactory();
 	
 	//get current session

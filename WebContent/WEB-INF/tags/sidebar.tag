@@ -23,7 +23,6 @@
 			<c:forEach var="articolo" items="${hvm.listaAllArticoli}" begin="0"
 				end="1">
 				<p>
-					<a href="/BLOG/ControllerDisplayArticle?ID=${articolo.id}">
 					<a href="${pageContext.request.contextPath}/viewArticle?ID=${articolo.id}">
 						${articolo.ristorante}</a>
 				</p>
@@ -37,7 +36,6 @@
 			<c:forEach var="articolo" items="${hvm.listaAllArticoli}" begin="2"
 				end="${hvm.totArticoliinDB}">
 				<p>
-					<a href="/BLOG/ControllerDisplayArticle?ID=${articolo.id}">
 					<a href="${pageContext.request.contextPath}/viewArticle?ID=${articolo.id}">
 						${articolo.ristorante}</a>
 				</p>
@@ -49,7 +47,7 @@
 		<div class="sidebar-module">
 			<h4>Elsewhere</h4>
 			<ol class="list-unstyled">
-				<li><a href="#">GitHub</a></li>
+				<li><a href="https://github.com/alerossi82">GitHub</a></li>
 				<li><a
 					href="https://www.linkedin.com/in/alessandro-rossi-4844374?trk=hp-identity-name">LinkedIn</a></li>
 			</ol>

@@ -152,7 +152,7 @@ if the ID of object in listPrezzo matches the IDPrezzo of the article, it is set
 			</tr>
 			<tr>
 				<td><img
-					src="${pageContext.request.contextPath}/img/${nea.articolo.foto}"
+					src="${pageContext.request.contextPath}/resources/img/${nea.articolo.foto}"
 					alt="no picture" height=150 width=300></img></td>
 			</tr>
 
