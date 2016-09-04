@@ -19,10 +19,14 @@ import models.HomeViewModel;
 import models.NewEditArticolo;
 
 public class prova {
+	
+	public static long roundUp(long num, long divisor) {
+	    return (num + divisor - 1) / divisor;
+	}
 
 	public static void main(String[] args) {
 		
-		List<String> ListaImg= new ArrayList<String>();
+		/*List<String> ListaImg= new ArrayList<String>();
 		
 		File folder = new File("C:/Users/Ale/workspace/SpringMVCBlog/WebContent/resources/img");
 		File[] arrayImg = folder.listFiles();
@@ -33,11 +37,24 @@ public class prova {
 		
 		for (String s: ListaImg) {
 			System.out.println(s);
-		}
+		}*/
 		
 		/*DAOArticolo dao= new DAOArticolo();
 		Articolo art=dao.select(4);
 		System.out.println(art.getArticolo());*/
+		
+		try {
+			HomeViewModel hvm=new HomeViewModel();
+			System.out.println("take:" + hvm.getTake());
+			System.out.println("tot. pages" + hvm.getTotPages());
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
 

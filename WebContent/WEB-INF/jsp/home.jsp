@@ -18,7 +18,8 @@
 				<h2 class="blog-post-title">${articolo.ristorante}</h2>
 			</a>
 			
-			<p class="blog-post-meta">${articolo.data}</p>
+			<!-- DEPRECATED -->
+			<%-- <p class="blog-post-meta">${articolo.data}</p> --%>
 
 			<p class="voto">
 				RATING:
@@ -35,7 +36,7 @@
 			
 			<!-- add img from folder resources -->
 			<img src= "<c:url value="/resources/img/${articolo.foto}"/>"
-				style="width: 300px; float: left; margin-right: 20px;"
+				style="width: 320px; height: 200px; float: left; margin-right: 20px;"
 				class="img-thumbnail">
 
 			<dl>
@@ -46,9 +47,10 @@
 				<dt>Price:</dt>
 				<dd>${articolo.prezzo.nome}</dd>
 			</dl>
-
-			<!-- set body of the article -->
-			<p>${articolo.articolo}</p>
+			
+			<!-- DEPRECATED -->
+			<%-- <!-- set body of the article -->
+			<p>${articolo.articolo}</p> --%>
 		</div>
 		<!-- /.blog-post -->
 	</c:forEach>
