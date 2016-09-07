@@ -21,13 +21,12 @@ public class DAOArticolo {
 	
 	Session session1;
 	
+	//DEPRECATED
 	// SQL query to SELECT all data from a single row in table Articoli
-	private String select = "FROM Articolo WHERE ID= :id";
-
-	//SQL query to SELECT all data from top ? rows in table Articoli
-	private String selectTop = "FROM Articolo ORDER BY ID desc";
+	//private String select = "FROM Articolo WHERE ID= :id";
 	
-	//SQL query to UPDATE a row in table Articoli
+	
+	/*//SQL query to UPDATE a row in table Articoli
 	private String update = " UPDATE Articolo "
 							+ "SET Ristorante= :ristorante,"
 							+ " IDArea= :idArea,"
@@ -40,9 +39,11 @@ public class DAOArticolo {
 							+ "WHERE ID= :id";
 	
 	//SQL query to DELETE a row in table Articoli
-	private String delete="DELETE FROM Articolo WHERE ID=?";
+	private String delete="DELETE FROM Articolo WHERE ID=?";*/
 	
 	
+	//SQL query to SELECT all data from top ? rows in table Articoli
+	//private String selectTop = "FROM Articolo ORDER BY ID desc";
 	
 	
 	//METHODS
@@ -55,46 +56,23 @@ public class DAOArticolo {
 	
 	
 	
-	// this method returns an Article for a given ID using the SELECT query
-	// called in servlet ControllerHome
-	public Articolo select(int id) {
+	
+	//returns an Article for the given id
+	public Articolo select (int id) {
 		
 		// create session
 		session1 = SessionManager.createSession();
-		
-		//run query select
 		session1.beginTransaction();
 		
-		Articolo art =  (Articolo) session1
-						.createQuery(select)
-						.setParameter("id", id) //positional parameter
-						.getSingleResult();
-	
-		session1.getTransaction().commit();
+		//get article from id
+		Articolo art=session1.get(Articolo.class, id);
 		
+		//execute query
+		session1.getTransaction().commit();
 		return art;
 	}
-	
-	
-	//returns a List of ? Articoli (?=fetch)
-	//called in servlet ControllerHome
-	public List<Articolo> selectTop (int fetch){
-		
-		// create session
-		session1 = SessionManager.createSession();
-		
-		//run query selectTop
-		session1.beginTransaction();
-		
-		List<Articolo> listArticoli = session1.createQuery(selectTop)
-									 .setMaxResults(fetch) //number of articles returned
-									 .getResultList();
-		
-		session1.getTransaction().commit();
-		
-		return listArticoli;
-	}
 
+	
 	
 	// insert new article in DB
 	//called in servlet ArticleManagerController
@@ -173,6 +151,43 @@ public class DAOArticolo {
 	
 	
 	
-
+	
+		//DEPRECATED
+		//returns a List of ? Articoli (?=fetch)
+	/*	public List<Articolo> selectTop (int fetch){
+			
+			// create session
+			session1 = SessionManager.createSession();
+			
+			//run query selectTop
+			session1.beginTransaction();
+			
+			List<Articolo> listArticoli = session1.createQuery(selectTop)
+										 .setMaxResults(fetch) //number of articles returned
+										 .getResultList();
+			
+			session1.getTransaction().commit();
+			
+			return listArticoli;
+		}*/
+	
+	// this method returns an Article for a given ID using the SELECT query
+/*	public Articolo select(int id) {
+		
+		// create session
+		session1 = SessionManager.createSession();
+		
+		//run query select
+		session1.beginTransaction();
+		
+		Articolo art =  (Articolo) session1
+						.createQuery(select)
+						.setParameter("id", id) //positional parameter
+						.getSingleResult();
+	
+		session1.getTransaction().commit();
+		
+		return art;
+	}*/
 
 }

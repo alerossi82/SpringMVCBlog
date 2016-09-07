@@ -59,6 +59,9 @@ public class Articolo {
 		this.foto = foto;
 	}
 
+	
+	
+	
 	//ACCESSORS
 	public int getId() {
 		return id;

@@ -53,9 +53,21 @@ public class HomeViewModel {
 	
 	
 	
+	
+	
+	
 	public void generateArticolo (int ID) throws SQLException{
 		articolo=DAOrm.getSingleArticolo(ID);
 	}
+	
+	
+	
+	
+	public void generateListaAllArticoli() throws SQLException{
+		listaAllArticoli=DAOrm.getAllArticles();
+	}
+	
+	
 	
 	
 	
@@ -70,9 +82,7 @@ public class HomeViewModel {
 	
 	
 	
-	public void generateListaAllArticoli() throws SQLException{
-		listaAllArticoli=DAOrm.getAllArticles();
-	}
+	
 	
 	
 	

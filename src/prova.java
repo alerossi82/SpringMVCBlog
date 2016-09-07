@@ -2,12 +2,16 @@ import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.Session;
+
 import DAO.DAOArea;
 import DAO.DAOArticolo;
 import DAO.DAOArticoloRM;
 import DAO.DAOCucina;
 import DAO.DAOPrezzo;
 import DAO.DAOVoto;
+import DAO.SessionManager;
 import beans.Area;
 import beans.Articolo;
 import beans.ArticoloRM;
@@ -20,9 +24,10 @@ import models.NewEditArticolo;
 
 public class prova {
 	
-	public static long roundUp(long num, long divisor) {
-	    return (num + divisor - 1) / divisor;
-	}
+		
+		public static long roundUp(long num, long divisor) {
+		    return (num + divisor - 1) / divisor;
+		}
 
 	public static void main(String[] args) {
 		
@@ -43,7 +48,7 @@ public class prova {
 		Articolo art=dao.select(4);
 		System.out.println(art.getArticolo());*/
 		
-		try {
+		/*try {
 			HomeViewModel hvm=new HomeViewModel();
 			System.out.println("take:" + hvm.getTake());
 			System.out.println("tot. pages" + hvm.getTotPages());
@@ -53,7 +58,15 @@ public class prova {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
+		
+		/*DAOArticolo dao = new DAOArticolo();
+		Articolo art= dao.select(7);
+		System.out.println(art.getRistorante());*/
+		 
+		DAOArticoloRM dao = new DAOArticoloRM();
+		long x = dao.getTotalCount();
+		System.out.println(x);
 		
 	}
 }
