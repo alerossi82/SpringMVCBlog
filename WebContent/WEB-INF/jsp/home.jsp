@@ -24,12 +24,12 @@
 			<p class="voto">
 				RATING:
 				<!-- add as many stars as per IDVoto -->
-				<c:forEach begin="1" end="${articolo.voto.ID}">
+				<c:forEach begin="1" end="${articolo.voto}">
 					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 				</c:forEach>
 				
 				<!-- remaining stars are empty -->
-				<c:forEach begin="1" end="${5-articolo.voto.ID}">
+				<c:forEach begin="1" end="${5-articolo.voto}">
 					<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
 				</c:forEach>
 			</p>
@@ -41,11 +41,11 @@
 
 			<dl>
 				<dt>Cuisine:</dt>
-				<dd>${articolo.cucina.nome}</dd>
+				<dd>${articolo.cucina}</dd>
 				<dt>Location:</dt>
-				<dd>${articolo.area.nome}</dd>
+				<dd>${articolo.area}</dd>
 				<dt>Price:</dt>
-				<dd>${articolo.prezzo.nome}</dd>
+				<dd>${articolo.prezzo}</dd>
 			</dl>
 			
 			<!-- DEPRECATED -->

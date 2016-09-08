@@ -64,10 +64,23 @@ public class prova {
 		Articolo art= dao.select(7);
 		System.out.println(art.getRistorante());*/
 		 
-		DAOArticoloRM dao = new DAOArticoloRM();
+	/*	DAOArticoloRM dao = new DAOArticoloRM();
 		long x = dao.getTotalCount();
-		System.out.println(x);
+		System.out.println(x);*/
 		
+		//DAOArticoloRM dao = new DAOArticoloRM();
+		
+		try {
+			HomeViewModel hvm= new HomeViewModel();
+			hvm.generateArticolo(8);
+			System.out.println(hvm.getArticolo().getCucina());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		 
 	}
 }
 

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GeneratorType;
 
 @Entity
-@Table (name="Articolo")
+@Table (name="vArticles")
 public class ArticoloRM {
 	
 	@Id
@@ -22,13 +22,131 @@ public class ArticoloRM {
 	@Column (name="Ristorante")
 	private String ristorante;
 	
+	@Column (name="Area")
+	private String area;
+	
+	@Column (name="Cucina")
+	private String cucina;
+	
+	@Column (name="Voto")
+	private int voto;
+	
+	@Column (name="Prezzo")
+	private String prezzo;
+	
 	@Column (name="Data")
 	private String data;
 	
 	@Column (name="Articolo")
 	private String articolo;
 	
-	//column IDArea is joined with entity Area
+	@Column (name="Foto")
+	private String foto;
+	
+	
+	
+	//CONSTRUCTOR
+	
+	public ArticoloRM(){
+		
+	}
+	
+	
+	
+	public ArticoloRM(int id, String ristorante, String area, String cucina, int voto, String prezzo, String data,
+			String articolo, String foto) {
+		super();
+		this.id = id;
+		this.ristorante = ristorante;
+		this.area = area;
+		this.cucina = cucina;
+		this.voto = voto;
+		this.prezzo = prezzo;
+		this.data = data;
+		this.articolo = articolo;
+		this.foto = foto;
+	}
+
+
+
+
+	//ACCESSORS
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getRistorante() {
+		return ristorante;
+	}
+
+	public void setRistorante(String ristorante) {
+		this.ristorante = ristorante;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public String getCucina() {
+		return cucina;
+	}
+
+	public void setCucina(String cucina) {
+		this.cucina = cucina;
+	}
+
+	public int getVoto() {
+		return voto;
+	}
+
+	public void setVoto(int voto) {
+		this.voto = voto;
+	}
+
+	public String getPrezzo() {
+		return prezzo;
+	}
+
+	public void setPrezzo(String prezzo) {
+		this.prezzo = prezzo;
+	}
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
+	public String getArticolo() {
+		return articolo;
+	}
+
+	public void setArticolo(String articolo) {
+		this.articolo = articolo;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+	
+	
+	//DEPRECATED
+	/*//column IDArea is joined with entity Area
 	@ManyToOne
 	@JoinColumn (name="IDArea")
 	private Area area;
@@ -46,88 +164,6 @@ public class ArticoloRM {
 	//column IDVoto is joined with entity Voto
 	@ManyToOne
 	@JoinColumn (name="IDVoto")
-	private Voto voto;
-	
-	@Column (name="Foto")
-	private String foto;
-	
-	
-	//ACCESSORS
-	public int getId() {
-		return id;
-	}
-	
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	public String getRistorante() {
-		return ristorante;
-	}
-	
-	public void setRistorante(String ristorante) {
-		this.ristorante = ristorante;
-	}
-	
-	public String getData() {
-		return data;
-	}
-	
-	public void setData(String data) {
-		this.data = data;
-	}
-	
-	public String getArticolo() {
-		return articolo;
-	}
-	
-	/*public String getArticoloSummary() {
-		return articolo.left(200) + "...";
-	}*/
-	
-	public void setArticolo(String articolo) {
-		this.articolo = articolo;
-	}
-	
-	public Area getArea() {
-		return area;
-	}
-
-	public void setArea(Area area) {
-		this.area = area;
-	}
-
-	public Cucina getCucina() {
-		return cucina;
-	}
-
-	public void setCucina(Cucina cucina) {
-		this.cucina = cucina;
-	}
-
-	public Prezzo getPrezzo() {
-		return prezzo;
-	}
-
-	public void setPrezzo(Prezzo prezzo) {
-		this.prezzo = prezzo;
-	}
-
-	public Voto getVoto() {
-		return voto;
-	}
-
-	public void setVoto(Voto voto) {
-		this.voto = voto;
-	}
-
-	public String getFoto() {
-		return foto;
-	}
-	
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
-	
+	private Voto voto;*/
 	
 }
