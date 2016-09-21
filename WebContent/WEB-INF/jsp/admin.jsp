@@ -22,10 +22,10 @@
 	</p>
 
 	<!-- from AdminController -->
-	<!-- cicle through hvm.listAllArticoli to generate list of all articles -->
+	<!-- cicle through advm.listAllArticoli to generate list of all articles -->
 	<!-- for each article, create link to pass its ID to ArticleManagerController -->
 	<table>
-		<c:forEach items="${hvm.listaAllArticoli}" var="art">
+		<c:forEach items="${advm.listaAllArticoli}" var="art">
 			<tr>
 				<td>${art.ristorante}</td>
 				<td> <a href="${pageContext.request.contextPath}/ArticleManager?IDarticolo=${art.id}"> edit</a> </td>

@@ -43,6 +43,8 @@ public class ArticoloRM {
 	@Column (name="Foto")
 	private String foto;
 	
+	@Column (name="Summary")
+	private String summary;
 	
 	
 	//CONSTRUCTOR
@@ -53,7 +55,7 @@ public class ArticoloRM {
 	
 	
 	
-	public ArticoloRM(int id, String ristorante, String area, String cucina, int voto, String prezzo, String data,
+/*	public ArticoloRM(int id, String ristorante, String area, String cucina, int voto, String prezzo, String data,
 			String articolo, String foto) {
 		super();
 		this.id = id;
@@ -65,7 +67,7 @@ public class ArticoloRM {
 		this.data = data;
 		this.articolo = articolo;
 		this.foto = foto;
-	}
+	}*/
 
 
 
@@ -143,27 +145,16 @@ public class ArticoloRM {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+
+
+	public String getSummary() {
+		return summary;
+	}
+
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
 	
-	
-	//DEPRECATED
-	/*//column IDArea is joined with entity Area
-	@ManyToOne
-	@JoinColumn (name="IDArea")
-	private Area area;
-	
-	//column IDCucina is joined with entity Cucina
-	@ManyToOne
-	@JoinColumn (name="IDCucina")
-	private Cucina cucina;
-	
-	//column IDPrezzo is joined with entity Prezzo
-	@ManyToOne
-	@JoinColumn (name="IDPrezzo")
-	private Prezzo prezzo;
-	
-	//column IDVoto is joined with entity Voto
-	@ManyToOne
-	@JoinColumn (name="IDVoto")
-	private Voto voto;*/
 	
 }

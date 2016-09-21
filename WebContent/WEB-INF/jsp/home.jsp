@@ -11,13 +11,13 @@
 	<!-- cicle through all Articolo objects in listaArticolo -->
 	<c:forEach var="articolo" items="${hvm.listaArticoliRM}">
 		<div class="blog-post">
-		
-		<!-- click on article title to open the article -->
+
+			<!-- click on article title to open the article -->
 			<a
 				href="${pageContext.request.contextPath}/viewArticle?ID=${articolo.id}">
 				<h2 class="blog-post-title">${articolo.ristorante}</h2>
 			</a>
-			
+
 			<!-- DEPRECATED -->
 			<%-- <p class="blog-post-meta">${articolo.data}</p> --%>
 
@@ -27,15 +27,15 @@
 				<c:forEach begin="1" end="${articolo.voto}">
 					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 				</c:forEach>
-				
+
 				<!-- remaining stars are empty -->
 				<c:forEach begin="1" end="${5-articolo.voto}">
 					<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
 				</c:forEach>
 			</p>
-			
+
 			<!-- add img from folder resources -->
-			<img src= "<c:url value="/resources/img/${articolo.foto}"/>"
+			<img src="<c:url value="/resources/img/${articolo.foto}"/>"
 				style="width: 320px; height: 200px; float: left; margin-right: 20px;"
 				class="img-thumbnail">
 
@@ -47,10 +47,16 @@
 				<dt>Price:</dt>
 				<dd>${articolo.prezzo}</dd>
 			</dl>
+
+			<!-- display first 100 characters for each article -->
+			<p>${articolo.summary}
 			
-			<!-- DEPRECATED -->
-			<%-- <!-- set body of the article -->
-			<p>${articolo.articolo}</p> --%>
+			<!-- link to open article -->
+				<a
+					href="${pageContext.request.contextPath}/viewArticle?ID=${articolo.id}">
+					read full article
+				</a>
+			</p>
 		</div>
 		<!-- /.blog-post -->
 	</c:forEach>

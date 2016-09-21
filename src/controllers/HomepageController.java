@@ -32,18 +32,8 @@ public class HomepageController {
 		//store page in session
 		request.getSession().setAttribute("page", page);
 		
-		try {
-
-			// generate list of ID and name for all restaurants in tab Articolo
-			hvm.generateListaAllArticoli();
-
-			// generate list of articles to display in current page
-			hvm.generateListaArticoliRM(page);
-
-		} catch (SQLException e) {
-			System.out.println("failed to create HomeViewModel");
-			e.printStackTrace();
-		}
+		// generate list of articles to display in current page
+		hvm.generateListaArticoliRM(page);
 
 		// check if user is logged in
 		model.addObject("user", GetLoggedinUser.getPrincipal());
@@ -51,36 +41,5 @@ public class HomepageController {
 		// hvm is automatically added to the model by @ModelAttribute
 		return model;
 	}
-
-	
-	
-	@RequestMapping(value = "/viewArticle", method = RequestMethod.POST)
-	
-	// @ModelAttribute creates HomeViewModel object and autowire all attributes
-	// @RequestParam gets param ID from URL
-	public ModelAndView createViewArticle(@ModelAttribute(value = "hvm") HomeViewModel hvm,
-										  @RequestParam(value = "ID") int ID) {
-
-		// wire model to VIEWARTICLE.JSP
-		ModelAndView model = new ModelAndView("viewArticle");
-		
-		try {
-
-			// generate article based on ID from URL
-			hvm.generateArticolo(ID);
-
-			// generate list of all articles to display on sidebar
-			hvm.generateListaAllArticoli();
-
-		} catch (SQLException e) {
-			System.out.println("failed to create HomeViewModel");
-			e.printStackTrace();
-		}
-
-		// check if user is logged in
-		model.addObject("user", GetLoggedinUser.getPrincipal());
-
-		return model;
-	}
-
 }
+	

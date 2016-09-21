@@ -2,9 +2,7 @@ import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Session;
-
 import DAO.DAOArea;
 import DAO.DAOArticolo;
 import DAO.DAOArticoloRM;
@@ -21,6 +19,7 @@ import beans.Users;
 import beans.Voto;
 import models.HomeViewModel;
 import models.NewEditArticolo;
+import models.SidebarViewModel;
 
 public class prova {
 	
@@ -70,17 +69,14 @@ public class prova {
 		
 		//DAOArticoloRM dao = new DAOArticoloRM();
 		
-		try {
-			HomeViewModel hvm= new HomeViewModel();
-			hvm.generateArticolo(8);
-			System.out.println(hvm.getArticolo().getCucina());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		DAOArticoloRM dao = new DAOArticoloRM();
+		
+		List <String> list = dao.getText();
+		
+		for (String s : list) {
+			System.out.println(s);
 		}
 		
-		
-		 
 	}
 }
 

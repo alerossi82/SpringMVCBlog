@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import beans.ArticoloRM;
+import models.AdminViewModel;
 import models.HomeViewModel;
 
 @Controller
@@ -22,21 +23,14 @@ public class AdminController {
 	
 	@RequestMapping (value="/admin", method= RequestMethod.GET)
 	
-	public ModelAndView createListaArticoli (@ModelAttribute(value="hvm") HomeViewModel hvm,
+	public ModelAndView createListaArticoli (@ModelAttribute(value="advm") AdminViewModel hvm,
 											 @RequestParam (value = "insert", required = false) String insert,
 											 @RequestParam (value = "update", required = false) String update,
 											 @RequestParam (value = "delete", required = false) String delete){
 		
 		ModelAndView model= new ModelAndView("admin");
 		
-		//generate listaAllArticoli, which is an attribute of hvm
-		try {
-			hvm.generateListaAllArticoli();
-			
-		} catch (SQLException e) {
-			System.out.println("failed to generate all articles list");
-			e.printStackTrace();
-		}
+		hvm.generateListaAllArticoli();
 		
 		//check if user is logged in
 		model.addObject("user", GetLoggedinUser.getPrincipal());

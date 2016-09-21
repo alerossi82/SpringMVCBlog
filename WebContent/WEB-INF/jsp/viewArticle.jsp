@@ -7,36 +7,36 @@
 <t:head>View Article</t:head>
 <t:TEMPLATE>
 	<div class="blog-post">
-		<h2 class="blog-post-title">${hvm.articolo.ristorante}</h2>
-		<p class="blog-post-meta">${hvm.articolo.data}</p>
+		<h2 class="blog-post-title">${avm.articolo.ristorante}</h2>
+		<p class="blog-post-meta">${avm.articolo.data}</p>
 
 		<p class="voto">
 			RATING:
 			<!-- add as many stars as per IDVoto -->
-			<c:forEach begin="1" end="${hvm.articolo.voto}">
+			<c:forEach begin="1" end="${avm.articolo.voto}">
 				<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 			</c:forEach>
 			<!-- remaining stars are empty -->
-			<c:forEach begin="1" end="${5-hvm.articolo.voto}">
+			<c:forEach begin="1" end="${5-avm.articolo.voto}">
 				<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
 			</c:forEach>
 		</p>
 
-		<img src="${pageContext.request.contextPath}/resources/img/${hvm.articolo.foto}"
+		<img src="${pageContext.request.contextPath}/resources/img/${avm.articolo.foto}"
 			style="width: 300px; float: left; margin-right: 20px;"
 			class="img-thumbnail">
 
 		<dl>
 			<dt>Cuisine:</dt>
-			<dd>${hvm.articolo.cucina}</dd>
+			<dd>${avm.articolo.cucina}</dd>
 			<dt>Location:</dt>
-			<dd>${hvm.articolo.area}</dd>
+			<dd>${avm.articolo.area}</dd>
 			<dt>Price:</dt>
-			<dd>${hvm.articolo.prezzo}</dd>
+			<dd>${avm.articolo.prezzo}</dd>
 		</dl>
 
 		<!-- set body of the article -->
-		<p>${hvm.articolo.articolo}</p>
+		<p>${avm.articolo.articolo}</p>
 	</div>
 	<!-- /.blog-post -->
 

@@ -14,7 +14,8 @@
 			</div>
 			<!-- blog-main -->
 
-			<t:sidebar />
+			<!-- call controller to create sidebar -->
+			<jsp:include page="/sidebar"/>
 
 		</div><!-- /.row -->
 	</div><!-- /.container -->
