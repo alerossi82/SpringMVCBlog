@@ -54,7 +54,7 @@
 			<!-- link to open article -->
 				<a
 					href="${pageContext.request.contextPath}/viewArticle?ID=${articolo.id}">
-					read full article
+					read more
 				</a>
 			</p>
 		</div>
