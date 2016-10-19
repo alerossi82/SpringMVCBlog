@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
-	// /login URL is called by Spring Security to access protected pages
+	// URL login is called by Spring Security to access protected pages
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 
 	public ModelAndView createLoginPage(
@@ -36,6 +36,9 @@ public class LoginController {
 		
 		//check if user is logged in
 		model.addObject("user", GetLoggedinUser.getPrincipal());
+		
+		//check if user has Admin role
+		model.addObject("role", GetLoggedinUser.hasRole("ROLE_ADMIN"));
 				
 		return model;
 

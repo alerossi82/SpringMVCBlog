@@ -37,6 +37,9 @@ public class HomepageController {
 
 		// check if user is logged in
 		model.addObject("user", GetLoggedinUser.getPrincipal());
+		
+		//check if user is Admin
+		model.addObject("role", GetLoggedinUser.hasRole("ROLE_ADMIN"));
 
 		// hvm is automatically added to the model by @ModelAttribute
 		return model;

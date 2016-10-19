@@ -41,6 +41,9 @@ public class ArticleManagerController {
 		// check is user is logged in
 		model.addObject("user", GetLoggedinUser.getPrincipal());
 		
+		//check if user is Admin
+		model.addObject("role", GetLoggedinUser.hasRole("ROLE_ADMIN"));
+		
 		return model;
 		
 	}

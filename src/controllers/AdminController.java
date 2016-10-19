@@ -35,6 +35,9 @@ public class AdminController {
 		//check if user is logged in
 		model.addObject("user", GetLoggedinUser.getPrincipal());
 		
+		//check if user is Admin
+		model.addObject("role", GetLoggedinUser.hasRole("ROLE_ADMIN"));
+		
 		//check if an article was created, updated or deleted
 		if (insert != null) {
 			model.addObject("message", "NEW ARTICLE WAS CREATED");

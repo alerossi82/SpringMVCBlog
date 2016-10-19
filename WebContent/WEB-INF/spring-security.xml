@@ -14,28 +14,48 @@
 		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/ArticleManager**" access="hasRole('ROLE_ADMIN')" />
 
-	<!-- This code invokes the login page, which will 
-		accept username and password as Http request parameters. 
+	<!-- This code invokes the login page, which will accept username and password as Http request parameters. 
 		If username and password are correct, forwards to /admin URL.
-		If username or password are not correct, forward to /login?error -->
+		If username or password are not correct, forward to /login?error
+		If the user does not have role admin, access is denied -->
 		<form-login login-page="/login" 
 					default-target-url="/admin" 
 					username-parameter="username"
 					password-parameter="password" 
 					authentication-failure-url="/login?error"/>
-					<!-- authentication-failure-url="/Access_Denied" -->
 		
 		<csrf disabled="true" />
 	</http>
 
-	<!-- authentication-manager declares a user with username, password and role (ROLE_ADMIN per this 
-		configuration). This user can be authenticated to access the application -->
+	<!-- create the datasource for the DB -->
+	<beans:bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName"
+			value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		<beans:property name="url"
+			value="jdbc:sqlserver://localhost;databaseName=BLOG" />
+		<beans:property name="username" value="alerossi82" />
+		<beans:property name="password" value="telecono" />
+	</beans:bean>
+
+	<!-- retrieve username, pword and role from the DB defined in dataSource-->
 	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				authorities-by-username-query="SELECT username, authority FROM authorities WHERE username = ?"
+				users-by-username-query="SELECT username, password, enabled FROM users WHERE username = ?" />
+		</authentication-provider>
+	</authentication-manager>
+
+
+        
+        <!-- DEPRECATED -->
+<!-- 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
 				<user name="admin" password="nimda" authorities="ROLE_ADMIN" />
 			</user-service>
 		</authentication-provider>
-	</authentication-manager>
+	</authentication-manager> -->
 
 </beans:beans>
