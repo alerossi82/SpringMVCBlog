@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table (name="Articolo")
@@ -14,40 +17,58 @@ public class Articolo {
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	@Column (name="ID")
+	@NotEmpty (message="error")
 	private int id;
 	
 	@Column (name="Ristorante")
+	@NotEmpty (message="error")
 	private String ristorante;
 	
 	@Column (name="Data")
+	@NotEmpty (message="error")
 	private String data;
 	
 	@Column (name="Articolo")
+	@NotEmpty (message="error")
 	private String articolo;
 	
 	@Column (name="IDArea")
+	@NotEmpty (message="error")
 	private int IDArea;
 	
 	@Column (name="IDCucina")
+	@NotEmpty (message="error")
 	private int IDCucina;
 	
 	@Column (name="IDPrezzo")
+	@NotEmpty (message="error")
 	private int IDPrezzo;
 	
 	@Column (name="IDVoto")
+	@NotEmpty (message="error")
 	private int IDVoto;
 	
 	@Column (name="Foto")
+	@NotEmpty (message="error")
 	private String foto;
 
 	
 	//CONSTRUCTORS
+	
 	public Articolo(){
 		
 	}
 	
-	public Articolo(int id, String ristorante, String data, String articolo, int iDArea, int iDCucina, int iDPrezzo,
-			int iDVoto, String foto) {
+	public Articolo(int id, 
+					String ristorante, 
+					String data, 
+					String articolo, 
+					int iDArea, 
+					int iDCucina, 
+					int iDPrezzo,
+					int iDVoto, 
+					String foto) {
+
 		this.id = id;
 		this.ristorante = ristorante;
 		this.data = data;

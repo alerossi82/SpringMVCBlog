@@ -1,17 +1,12 @@
 package controllers;
 
-import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
 import models.HomeViewModel;
 
 //create models for views Home and viewArticle
@@ -34,12 +29,6 @@ public class HomepageController {
 		
 		// generate list of articles to display in current page
 		hvm.generateListaArticoliRM(page);
-
-		// check if user is logged in
-		model.addObject("user", GetLoggedinUser.getPrincipal());
-		
-		//check if user is Admin
-		model.addObject("role", GetLoggedinUser.hasRole("ROLE_ADMIN"));
 
 		// hvm is automatically added to the model by @ModelAttribute
 		return model;

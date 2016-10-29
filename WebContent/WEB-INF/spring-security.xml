@@ -13,6 +13,10 @@
 	<http auto-config="true">
 		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/ArticleManager**" access="hasRole('ROLE_ADMIN')" />
+		
+		<!-- access denied page -->
+		<access-denied-handler error-page="/AccessDenied" />
+		
 
 	<!-- This code invokes the login page, which will accept username and password as Http request parameters. 
 		If username and password are correct, forwards to /admin URL.

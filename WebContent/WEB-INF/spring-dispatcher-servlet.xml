@@ -28,6 +28,8 @@
 	
 	<!-- mapping resources folder -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
+	<!-- enable validation support -->
 	<mvc:annotation-driven />
 
 </beans>
