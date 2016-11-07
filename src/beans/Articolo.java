@@ -17,39 +17,39 @@ public class Articolo {
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	@Column (name="ID")
-	@NotEmpty (message="error")
+	@NotNull (message="This field can not be empty")
 	private int id;
 	
 	@Column (name="Ristorante")
-	@NotEmpty (message="error")
+	@NotEmpty (message="This field can not be empty")
 	private String ristorante;
 	
 	@Column (name="Data")
-	@NotEmpty (message="error")
+	@NotEmpty (message="This field can not be empty")
 	private String data;
 	
 	@Column (name="Articolo")
-	@NotEmpty (message="error")
+	@NotEmpty (message="This field can not be empty")
 	private String articolo;
 	
 	@Column (name="IDArea")
-	@NotEmpty (message="error")
+	@NotNull (message="This field can not be empty")
 	private int IDArea;
 	
 	@Column (name="IDCucina")
-	@NotEmpty (message="error")
+	@NotNull (message="This field can not be empty")
 	private int IDCucina;
 	
 	@Column (name="IDPrezzo")
-	@NotEmpty (message="error")
+	@NotNull (message="This field can not be empty")
 	private int IDPrezzo;
 	
 	@Column (name="IDVoto")
-	@NotEmpty (message="error")
+	@NotNull (message="This field can not be empty")
 	private int IDVoto;
 	
 	@Column (name="Foto")
-	@NotEmpty (message="error")
+	@NotNull (message="This field can not be empty")
 	private String foto;
 
 	

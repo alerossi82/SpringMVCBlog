@@ -4,6 +4,9 @@ import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.validation.Valid;
+
 import DAO.DAOArea;
 import DAO.DAOArticolo;
 import DAO.DAOCucina;
@@ -18,7 +21,10 @@ import beans.Voto;
 public class NewEditArticolo {
 	
 	//ATTRIBUTES
+	
+	@Valid	//requested to trigger validation of bean Articolo
 	private Articolo articolo;
+	
 	private List<Area> ListaArea;
 	private List<Cucina> ListaCucina;
 	private List<Prezzo> ListaPrezzo;
@@ -31,8 +37,17 @@ public class NewEditArticolo {
 	//METHODS
 	
 	//CONSTRUCTOR
+	
+	//create article model without ID number
+	//used in controller POST method
+	public NewEditArticolo () {
+		
+		populateLists();
+	}
+	
 	//create Article model based on ID number
 	//if ID=0 (new Article), creates empty model
+	//used in controller GET method
 	public NewEditArticolo(int ID) throws SQLException {
 		
 		//call DAOArticolo.select only if article already exists
@@ -41,36 +56,39 @@ public class NewEditArticolo {
 			articolo = DAOart.select(ID);
 		}
 		
-		//return list of all objects from table Area
+		populateLists();
+
+	}
+	
+	public void populateLists() {
+		
+		// return list of all objects from table Area
 		DAOArea DAOa = new DAOArea();
 		ListaArea = DAOa.getArea();
-		
-		//return list of all objects from table Cucina
+
+		// return list of all objects from table Cucina
 		DAOCucina DAOc = new DAOCucina();
 		ListaCucina = DAOc.getCucina();
-		
-		//return list of all objects from table Prezzo
+
+		// return list of all objects from table Prezzo
 		DAOPrezzo DAOp = new DAOPrezzo();
 		ListaPrezzo = DAOp.getPrezzo();
-		
-		//return list of all objects from table Voto
+
+		// return list of all objects from table Voto
 		DAOVoto DAOv = new DAOVoto();
 		ListaVoto = DAOv.getVoto();
 
 		ListaImg = new ArrayList<String>();
-		
-		
 		// create array containing the path of all files in folder img
 		File folder = new File("C:/Users/Ale/workspace/SpringMVCBlog/WebContent/resources/img");
 		File[] arrayImg = folder.listFiles();
 		// get the name of each file in the array and add it to ListaImg
 		for (File f : arrayImg) {
-			String fileName=f.getName();
+			String fileName = f.getName();
 			ListaImg.add(fileName);
 		}
 
 	}
-	
 	
 	
 	
