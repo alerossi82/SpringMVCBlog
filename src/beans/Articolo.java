@@ -7,8 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table (name="Articolo")
@@ -22,14 +24,17 @@ public class Articolo {
 	
 	@Column (name="Ristorante")
 	@NotEmpty (message="This field can not be empty")
+	@Pattern (regexp="[^<&&[^>]]*", message="The use of characters < and > is not allowed") //exclude tags from textbox
 	private String ristorante;
 	
 	@Column (name="Data")
+	@Pattern (regexp="(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)", message="Please insert date in format dd/mm/yyyy")
 	@NotEmpty (message="This field can not be empty")
 	private String data;
 	
 	@Column (name="Articolo")
 	@NotEmpty (message="This field can not be empty")
+	@Pattern (regexp="[^<&&[^>]]*", message="The use of characters < and > is not allowed") //exclude tags from textbox
 	private String articolo;
 	
 	@Column (name="IDArea")

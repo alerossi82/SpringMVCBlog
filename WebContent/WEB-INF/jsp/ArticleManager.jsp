@@ -102,7 +102,7 @@
 			<tr>
 				<td>Website</td>
 				<td><input name="website" size="50"
-					placeholder="insert website address"}></td>
+					placeholder="insert website address"></td>
 			</tr>
 
 			<tr>
