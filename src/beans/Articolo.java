@@ -1,14 +1,16 @@
 package beans;
 
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -28,9 +30,10 @@ public class Articolo {
 	private String ristorante;
 	
 	@Column (name="Data")
-	@Pattern (regexp="(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)", message="Please insert date in format dd/mm/yyyy")
-	@NotEmpty (message="This field can not be empty")
-	private String data;
+	@NotNull (message="This field can not be empty")
+	/*@Pattern (regexp="(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)", message="Please insert date in format dd/mm/yyyy")*/
+	@Temporal (TemporalType.DATE) //match the data type used in DB
+	private Date data;
 	
 	@Column (name="Articolo")
 	@NotEmpty (message="This field can not be empty")
@@ -66,7 +69,7 @@ public class Articolo {
 	
 	public Articolo(int id, 
 					String ristorante, 
-					String data, 
+					Date data, 
 					String articolo, 
 					int iDArea, 
 					int iDCucina, 
@@ -105,11 +108,11 @@ public class Articolo {
 		this.ristorante = ristorante;
 	}
 
-	public String getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 

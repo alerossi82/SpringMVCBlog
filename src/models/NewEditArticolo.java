@@ -2,11 +2,12 @@ package models;
 
 import java.io.File;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
 import javax.validation.Valid;
-
 import DAO.DAOArea;
 import DAO.DAOArticolo;
 import DAO.DAOCucina;
@@ -24,14 +25,12 @@ public class NewEditArticolo {
 	
 	@Valid	//requested to trigger validation of bean Articolo
 	private Articolo articolo;
-	
+
 	private List<Area> ListaArea;
 	private List<Cucina> ListaCucina;
 	private List<Prezzo> ListaPrezzo;
 	private List<Voto> ListaVoto;
 	private List<String> ListaImg;
-	
-	
 	
 	
 	//METHODS
@@ -49,15 +48,15 @@ public class NewEditArticolo {
 	//if ID=0 (new Article), creates empty model
 	//used in controller GET method
 	public NewEditArticolo(int ID) throws SQLException {
-		
-		//call DAOArticolo.select only if article already exists
+
+		// call DAOArticolo.select only if article already exists
 		if (ID != 0) {
 			DAOArticolo DAOart = new DAOArticolo();
 			articolo = DAOart.select(ID);
 		}
-		
-		populateLists();
 
+		populateLists();
+		
 	}
 	
 	public void populateLists() {
@@ -89,7 +88,6 @@ public class NewEditArticolo {
 		}
 
 	}
-	
 	
 	
 	

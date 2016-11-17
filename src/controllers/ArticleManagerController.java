@@ -1,13 +1,15 @@
 package controllers;
 
 import java.sql.SQLException;
-import java.util.Map;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.validation.Valid;
-
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +21,15 @@ import models.NewEditArticolo;
 
 @Controller
 public class ArticleManagerController {
+	
+	//use InitBinder to customize the date format for sending date to DB
+	@InitBinder
+	public void customizeBinding (WebDataBinder binder) {
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		CustomDateEditor dateEditor = new CustomDateEditor(dateFormat, true);
+		binder.registerCustomEditor(Date.class, dateEditor);
+	}
 	
 	@RequestMapping (value="/ArticleManager", method= RequestMethod.GET)
 	

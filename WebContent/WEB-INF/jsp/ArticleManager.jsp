@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <t:head>Article manager</t:head>
@@ -41,6 +42,7 @@
 
 			<tr>
 				<td><label>Location</label></td>
+				
 				<td><form:select path="articolo.IDArea">
 						<!-- for each object in nea.listArea, checks the ID and adds the name to the select menu
 						if the ID of object in listArea matches the IDArea of the article, it is set as selected -->
@@ -51,11 +53,12 @@
 										${area.nome}</form:option>>
 								</c:when>
 								<c:otherwise>
-									<form:option value="${area.ID}">${area.nome}</form:option>>
+									<form:option value="${area.ID}">${area.nome}</form:option>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 				</form:select></td>
+				
 				<td><form:errors path="articolo.IDArea"/></td>
 			</tr>
 			
@@ -107,10 +110,16 @@
 
 			<tr>
 				<td>Article date</td>
-				<td><form:input path="articolo.data" placeholder="aaaa/mm/dd" size="12"
-					value="${nea.articolo.data}"></form:input>
-					<td><form:errors path="articolo.data"/></td>
+				
+				<!-- format date using dd/MM/yyyy pattern -->
+				<fmt:formatDate value="${nea.articolo.data}" var="date" pattern="dd/MM/yyyy" />
+				
+				<td><form:input path="articolo.data" placeholder="dd/MM/yyyy"
+						size="12" value="${date}"></form:input>
+						
+				<td><form:errors path="articolo.data" /></td>
 			</tr>
+			
 		</table>
 		
 		<!-- textbox -->

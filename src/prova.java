@@ -1,7 +1,12 @@
 import java.io.File;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import javax.xml.crypto.Data;
 import org.hibernate.Session;
 import DAO.DAOArea;
 import DAO.DAOArticolo;
@@ -22,62 +27,43 @@ import models.NewEditArticolo;
 import models.SidebarViewModel;
 
 public class prova {
-	
-		
-		public static long roundUp(long num, long divisor) {
-		    return (num + divisor - 1) / divisor;
-		}
 
-	public static void main(String[] args) {
-		
-		/*List<String> ListaImg= new ArrayList<String>();
-		
-		File folder = new File("C:/Users/Ale/workspace/SpringMVCBlog/WebContent/resources/img");
-		File[] arrayImg = folder.listFiles();
-		for (File f : arrayImg) {
-			String fileName=f.getName();
-			ListaImg.add(fileName);
-		}
-		
-		for (String s: ListaImg) {
-			System.out.println(s);
-		}*/
+	public static void main(String[] args) throws SQLException {
 		
 		/*DAOArticolo dao= new DAOArticolo();
-		Articolo art=dao.select(4);
-		System.out.println(art.getArticolo());*/
+		Articolo art=dao.select(1035);
 		
-		/*try {
-			HomeViewModel hvm=new HomeViewModel();
-			System.out.println("take:" + hvm.getTake());
-			System.out.println("tot. pages" + hvm.getTotPages());
-			
-			
-			
-		} catch (SQLException e) {
+		Date date = art.getData();
+		DateFormat df = new SimpleDateFormat("dd MM yyyy");
+		String text = df.format(date);
+		System.out.println(text);
+		
+		Date date1 = null;
+		
+		try {
+			date1= df.parse(text);
+		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
-		
-		/*DAOArticolo dao = new DAOArticolo();
-		Articolo art= dao.select(7);
-		System.out.println(art.getRistorante());*/
-		 
-	/*	DAOArticoloRM dao = new DAOArticoloRM();
-		long x = dao.getTotalCount();
-		System.out.println(x);*/
-		
-		//DAOArticoloRM dao = new DAOArticoloRM();
-		
-		DAOArticoloRM dao = new DAOArticoloRM();
-		
-		List <String> list = dao.getText();
-		
-		for (String s : list) {
-			System.out.println(s);
 		}
 		
+		art.setData(date1);
+		
+		System.out.println(art.getData());*/
+		
+		//Articolo art = new Articolo();
+		//DAOArticolo dao=new DAOArticolo();
+		
+		
+		//DAOArticolo daoArt= new DAOArticolo();
+		NewEditArticolo nea = new NewEditArticolo(0);
+		List<Cucina> cucine = nea.getListaCucina();
+		for (Cucina c: cucine){
+			System.out.println(c.getID()+c.getNome());
+		}
+				
 	}
 }
+
 
 
