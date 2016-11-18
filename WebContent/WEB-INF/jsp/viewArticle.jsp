@@ -2,13 +2,17 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <t:head>View Article</t:head>
 <t:TEMPLATE>
 	<div class="blog-post">
 		<h2 class="blog-post-title">${avm.articolo.ristorante}</h2>
-		<p class="blog-post-meta">${avm.articolo.data}</p>
+		
+		<!-- format date using dd/MM/yyyy pattern -->
+		<fmt:formatDate value="${avm.articolo.data}" var="date" pattern="dd/MM/yyyy" />
+		<p class="blog-post-meta">${date}</p>
 
 		<p class="voto">
 			RATING:

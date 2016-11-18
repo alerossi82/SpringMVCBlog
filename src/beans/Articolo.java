@@ -1,6 +1,7 @@
 package beans;
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -33,6 +36,7 @@ public class Articolo {
 	@NotNull (message="This field can not be empty")
 	/*@Pattern (regexp="(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)", message="Please insert date in format dd/mm/yyyy")*/
 	@Temporal (TemporalType.DATE) //match the data type used in DB
+	@IsValidDate //check date format is dd/MM/yyyy (custom validator)
 	private Date data;
 	
 	@Column (name="Articolo")

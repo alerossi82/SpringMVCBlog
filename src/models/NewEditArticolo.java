@@ -2,10 +2,7 @@ package models;
 
 import java.io.File;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.validation.Valid;
 import DAO.DAOArea;
@@ -79,7 +76,7 @@ public class NewEditArticolo {
 
 		ListaImg = new ArrayList<String>();
 		// create array containing the path of all files in folder img
-		File folder = new File("C:/Users/Ale/workspace/SpringMVCBlog/WebContent/resources/img");
+		File folder = new File("C:/Users/Alessandro/workspace/SpringMVCBlog/WebContent/resources/img");
 		File[] arrayImg = folder.listFiles();
 		// get the name of each file in the array and add it to ListaImg
 		for (File f : arrayImg) {

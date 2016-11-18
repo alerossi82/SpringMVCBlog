@@ -6,8 +6,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
+
+import javax.validation.ConstraintValidatorContext;
 import javax.xml.crypto.Data;
+
 import org.hibernate.Session;
+
 import DAO.DAOArea;
 import DAO.DAOArticolo;
 import DAO.DAOArticoloRM;
@@ -19,6 +24,7 @@ import beans.Area;
 import beans.Articolo;
 import beans.ArticoloRM;
 import beans.Cucina;
+import beans.DateValidator;
 import beans.Prezzo;
 import beans.Users;
 import beans.Voto;
@@ -51,19 +57,33 @@ public class prova {
 		
 		System.out.println(art.getData());*/
 		
-		//Articolo art = new Articolo();
-		//DAOArticolo dao=new DAOArticolo();
 		
 		
 		//DAOArticolo daoArt= new DAOArticolo();
-		NewEditArticolo nea = new NewEditArticolo(0);
+		/*NewEditArticolo nea = new NewEditArticolo(0);
 		List<Cucina> cucine = nea.getListaCucina();
 		for (Cucina c: cucine){
-			System.out.println(c.getID()+c.getNome());
-		}
-				
+			System.out.println(c.getID()+c.getNome());*/
+		
+		NewEditArticolo nea = new NewEditArticolo(8);
+		Date ladata= nea.getArticolo().getData();
+		String date = ladata.toString();
+		System.out.println(date);
+		
+		String regex = "(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)";
+		String test = date;
+		boolean testResult=Pattern.compile(regex).matcher(test).find();
+		System.out.println(testResult);
+		
+		DateValidator validator= new DateValidator();
+		//ConstraintValidatorContext ctx = null;
+		Boolean bool =validator.isValid(ladata, ctx);
+		System.out.println(bool);
+		
 	}
+
 }
+
 
 
 

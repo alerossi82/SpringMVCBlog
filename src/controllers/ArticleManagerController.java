@@ -22,7 +22,7 @@ import models.NewEditArticolo;
 @Controller
 public class ArticleManagerController {
 	
-	//use InitBinder to customize the date format for sending date to DB
+	//use InitBinder to define date format for DB
 	@InitBinder
 	public void customizeBinding (WebDataBinder binder) {
 		

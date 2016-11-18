@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import org.hibernate.annotations.GeneratorType;
 
 @Entity
@@ -35,7 +38,7 @@ public class ArticoloRM {
 	private String prezzo;
 	
 	@Column (name="Data")
-	private String data;
+	private Date data;
 	
 	@Column (name="Articolo")
 	private String articolo;
@@ -122,11 +125,11 @@ public class ArticoloRM {
 		this.prezzo = prezzo;
 	}
 
-	public String getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 
