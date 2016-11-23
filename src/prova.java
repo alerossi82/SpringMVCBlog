@@ -24,7 +24,6 @@ import beans.Area;
 import beans.Articolo;
 import beans.ArticoloRM;
 import beans.Cucina;
-import beans.DateValidator;
 import beans.Prezzo;
 import beans.Users;
 import beans.Voto;
@@ -77,8 +76,6 @@ public class prova {
 		
 		DateValidator validator= new DateValidator();
 		//ConstraintValidatorContext ctx = null;
-		Boolean bool =validator.isValid(ladata, ctx);
-		System.out.println(bool);
 		
 	}
 

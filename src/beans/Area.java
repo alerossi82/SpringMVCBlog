@@ -14,7 +14,7 @@ public class Area {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
-	private int ID;
+	private Integer ID;
 
 	@Column(name = "Nome")
 	private String nome;
@@ -23,17 +23,17 @@ public class Area {
 	public Area() {
 	}
 
-	public Area(int iD, String nome) {
+	public Area(Integer iD, String nome) {
 		ID = iD;
 		this.nome = nome;
 	}
 
 	// ACCESSORS
-	public int getID() {
+	public Integer getID() {
 		return ID;
 	}
 
-	public void setID(int iD) {
+	public void setID(Integer iD) {
 		ID = iD;
 	}
 

@@ -159,6 +159,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
  */
 Table td {
 	padding: 5px;
+	white-space: nowrap; /* force the contenct of td to display on one line */
+	
 }
 
 textarea {
@@ -175,3 +177,8 @@ textarea {
 .hidden_list_item {
 	display: none;
 }
+
+ .error { 
+        color: red; 
+		font-weight: bold; 
+    }

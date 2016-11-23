@@ -6,7 +6,7 @@
 <body>
 	<t:masthead/>
 	<div class="container">
-		<t:header />
+		<t:header/>
 		<div class="row">
 			<div class="col-sm-8 blog-main">
 				<jsp:doBody />

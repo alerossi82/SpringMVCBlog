@@ -35,7 +35,7 @@
 	<!-- source file for customized error messages -->
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basename" value="ValidatorMessages" />
+		<property name="basenames" value="messages" />
 	</bean>
 	
 </beans>

@@ -21,15 +21,15 @@
 					<c:when test="${nea.articolo.id>0}">
 						<td>Article ID</td>
 						<td><form:input path="articolo.id" size="4" placeholder="ID articolo"
-							value="${nea.articolo.id}" readonly="readonly" /></td>
+							value="${nea.articolo.id}" readonly="true" /></td>
 					</c:when>
 					<c:otherwise>
 						<td>Article ID</td>
 						<td><form:input path="articolo.id" size="4" placeholder="ID articolo"
-							value="0" readonly="readonly" /></td>
+							value="0" readonly="true" /></td>
 					</c:otherwise>
 				</c:choose>
-				<td><form:errors path="articolo.id"/></td>
+				<td><form:errors path="articolo.id" cssClass="error"/></td>
 			</tr>
 
 			<tr>
@@ -37,15 +37,16 @@
 				<td><form:input path="articolo.ristorante" size="50"
 					placeholder="Insert restaurant name"
 					value="${nea.articolo.ristorante}" /></td>
-				<td><form:errors path="articolo.ristorante"/></td>
+				<td><form:errors path="articolo.ristorante" cssClass="error"/></td>
 			</tr>
 
 			<tr>
 				<td><label>Location</label></td>
 				
 				<td><form:select path="articolo.IDArea">
-						<!-- for each object in nea.listArea, checks the ID and adds the name to the select menu
-						if the ID of object in listArea matches the IDArea of the article, it is set as selected -->
+						
+						<form:option value="">---</form:option>
+						
 						<c:forEach var="area" items="${nea.listaArea}">
 							<c:choose>
 								<c:when test="${area.ID==nea.articolo.IDArea}">
@@ -59,14 +60,20 @@
 						</c:forEach>
 				</form:select></td>
 				
-				<td><form:errors path="articolo.IDArea"/></td>
+				<td><form:errors path="articolo.IDArea" cssClass="error"/></td>
 			</tr>
 			
-			<!-- for each object in nea.listCucina, checks the ID and adds the name to the select menu
-			if the ID of object in listCucina matches the IDCucina of the article, it is set as selected -->
+			
 			<tr>
 				<td><label> Cuisine</label></td>
+				
 				<td><form:select path="articolo.IDCucina">
+				
+				<!-- first list item is empty -->
+				<form:option value="">---</form:option>
+				
+				<!-- cicle through nea.listCucina and adds the cusine name to the select menu
+				if the Cucina.ID in listCucina matches the IDCucina of the article, it is set as selected -->
 						<c:forEach var="cucina" items="${nea.listaCucina}">
 							<c:choose>
 								<c:when test="${cucina.ID==nea.articolo.IDCucina}">
@@ -79,13 +86,20 @@
 							</c:choose>
 						</c:forEach>
 				</form:select></td>
-				<td><form:errors path="articolo.IDCucina"/></td>
+				<td><form:errors path="articolo.IDCucina" cssClass="error"/></td>
 			</tr>
-			<!-- for each object in nea.listPrezzo, checks the ID and adds the name to the select menu
-			if the ID of object in listPrezzo matches the IDPrezzo of the article, it is set as selected -->
+			
+			
 			<tr>
 				<td><label> Price </label></td>
+				
 				<td><form:select path="articolo.IDPrezzo">
+				
+				<!-- first list item is empty -->
+				<form:option value="">---</form:option>
+				
+				<!-- for each object in nea.listPrezzo, checks the ID and adds the name to the select menu
+				if the ID of object in listPrezzo matches the IDPrezzo of the article, it is set as selected -->
 						<c:forEach var="prezzo" items="${nea.listaPrezzo}">
 							<c:choose>
 								<c:when test="${prezzo.ID==nea.articolo.IDPrezzo}">
@@ -99,7 +113,7 @@
 							</c:choose>
 						</c:forEach>
 				</form:select></td>
-				<td><form:errors path="articolo.IDPrezzo"/></td>
+				<td><form:errors path="articolo.IDPrezzo" cssClass="error"/></td>
 			</tr>
 
 			<tr>
@@ -117,13 +131,13 @@
 				<td><form:input path="articolo.data" placeholder="dd/MM/yyyy"
 						size="12" value="${date}"></form:input>
 						
-				<td><form:errors path="articolo.data" /></td>
+				<td><form:errors path="articolo.data" cssClass="error"/></td>
 			</tr>
 			
 		</table>
 		
 		<!-- textbox -->
-		<form:errors path="articolo.articolo"/>
+		<form:errors path="articolo.articolo" cssClass="error"/>
 		<form:textarea path="articolo.articolo"/>
 		
 
@@ -131,9 +145,13 @@
 			<tr>
 				<td><label> Stars </label></td>
 				
+				<td> <form:select path="articolo.IDVoto">
+				
+				<!-- first list item is empty -->
+				<form:option value="">---</form:option>
+				
 				<!-- for each object in nea.listVoto, checks the ID and adds the name to the select menu -->
 				<!-- if the ID of the object in listVoto matches the IDVoto of the article, it is set as selected -->
-				<td> <form:select path="articolo.IDVoto">
 						<c:forEach var="voto" items="${nea.listaVoto}">
 							<c:choose>
 								<c:when test="${voto.ID==nea.articolo.IDVoto}">
@@ -147,7 +165,7 @@
 						</c:forEach>
 				</form:select> </td>
 				
-				<td><form:errors path="articolo.IDVoto"/></td>
+				<td><form:errors path="articolo.IDVoto" cssClass="error"/></td>
 			</tr>
 
 			<tr>
@@ -155,6 +173,10 @@
 				
 				<td>
 					<form:select path="articolo.foto">
+					
+					<!-- first list item is empty -->
+					<form:option value="">---</form:option>
+					
 						<c:forEach var="img" items="${nea.listaImg}">
 							<c:choose>
 							
@@ -171,7 +193,7 @@
 					</form:select>
 				</td>
 				
-				<td><form:errors path="articolo.foto"/></td>
+				<td><form:errors path="articolo.foto" cssClass="error"/></td>
 			</tr>
 
 			<tr>

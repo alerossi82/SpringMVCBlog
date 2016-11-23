@@ -35,30 +35,31 @@ public class Articolo {
 	@Column (name="Data")
 	@NotNull (message="This field can not be empty")
 	/*@Pattern (regexp="(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)", message="Please insert date in format dd/mm/yyyy")*/
-	@Temporal (TemporalType.DATE) //match the data type used in DB
-	@IsValidDate //check date format is dd/MM/yyyy (custom validator)
+	@Temporal (TemporalType.DATE) //date format used in SQL
+	//@IsValidDate //check date format is dd/MM/yyyy (custom validator)
+	//@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date data;
 	
 	@Column (name="Articolo")
-	@NotEmpty (message="This field can not be empty")
+	@NotEmpty (message="Article text can not be empty")
 	@Pattern (regexp="[^<&&[^>]]*", message="The use of characters < and > is not allowed") //exclude tags from textbox
 	private String articolo;
 	
 	@Column (name="IDArea")
 	@NotNull (message="This field can not be empty")
-	private int IDArea;
+	private Integer IDArea;
 	
 	@Column (name="IDCucina")
 	@NotNull (message="This field can not be empty")
-	private int IDCucina;
+	private Integer IDCucina;
 	
 	@Column (name="IDPrezzo")
 	@NotNull (message="This field can not be empty")
-	private int IDPrezzo;
+	private Integer IDPrezzo;
 	
 	@Column (name="IDVoto")
 	@NotNull (message="This field can not be empty")
-	private int IDVoto;
+	private Integer IDVoto;
 	
 	@Column (name="Foto")
 	@NotNull (message="This field can not be empty")
@@ -75,10 +76,10 @@ public class Articolo {
 					String ristorante, 
 					Date data, 
 					String articolo, 
-					int iDArea, 
-					int iDCucina, 
-					int iDPrezzo,
-					int iDVoto, 
+					Integer iDArea, 
+					Integer iDCucina, 
+					Integer iDPrezzo,
+					Integer iDVoto, 
 					String foto) {
 
 		this.id = id;
@@ -128,35 +129,35 @@ public class Articolo {
 		this.articolo = articolo;
 	}
 
-	public int getIDArea() {
+	public Integer getIDArea() {
 		return IDArea;
 	}
 
-	public void setIDArea(int iDArea) {
+	public void setIDArea(Integer iDArea) {
 		IDArea = iDArea;
 	}
 
-	public int getIDCucina() {
+	public Integer getIDCucina() {
 		return IDCucina;
 	}
 
-	public void setIDCucina(int iDCucina) {
+	public void setIDCucina(Integer iDCucina) {
 		IDCucina = iDCucina;
 	}
 
-	public int getIDPrezzo() {
+	public Integer getIDPrezzo() {
 		return IDPrezzo;
 	}
 
-	public void setIDPrezzo(int iDPrezzo) {
+	public void setIDPrezzo(Integer iDPrezzo) {
 		IDPrezzo = iDPrezzo;
 	}
 
-	public int getIDVoto() {
+	public Integer getIDVoto() {
 		return IDVoto;
 	}
 
-	public void setIDVoto(int iDVoto) {
+	public void setIDVoto(Integer iDVoto) {
 		IDVoto = iDVoto;
 	}
 
