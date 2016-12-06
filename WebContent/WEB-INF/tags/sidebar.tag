@@ -28,8 +28,9 @@
 				</p>
 			</c:forEach>
 		</div>
-
-		<button class="more">more</button>
+		
+		<!-- invoke JQuery function from head.tag -->
+		<button class="more">more</button> 
 
 		<!-- hidden articles -->
 		<div class="hidden_items" hidden="true">

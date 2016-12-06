@@ -1,7 +1,6 @@
 package beans;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,10 +33,8 @@ public class Articolo {
 	
 	@Column (name="Data")
 	@NotNull (message="This field can not be empty")
-	/*@Pattern (regexp="(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)", message="Please insert date in format dd/mm/yyyy")*/
-	@Temporal (TemporalType.DATE) //date format used in SQL
-	//@IsValidDate //check date format is dd/MM/yyyy (custom validator)
-	//@DateTimeFormat(pattern = "dd/MM/yyyy")
+	//@Temporal (TemporalType.DATE) //date format used in SQL
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private Date data;
 	
 	@Column (name="Articolo")

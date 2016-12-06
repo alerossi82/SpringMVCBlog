@@ -39,7 +39,8 @@
 				</p>
 			</c:forEach>
 		</div>
-
+		
+		<!-- this button activates the jquery script for sidebar -->
 		<button class="more">more</button>
 
 		<!-- hidden articles -->
@@ -51,7 +52,9 @@
 						${articolo.ristorante}</a>
 				</p>
 			</c:forEach>
+			
 			<!-- this button will be initially hidden -->
+			<!-- this button activates the jquery script for sidebar -->
 			<button class="less">less</button>
 		</div>
 

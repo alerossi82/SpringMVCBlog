@@ -37,7 +37,7 @@
 				<td><form:input path="articolo.ristorante" size="50"
 					placeholder="Insert restaurant name"
 					value="${nea.articolo.ristorante}" /></td>
-				<td><form:errors path="articolo.ristorante" cssClass="error"/></td>
+				<td><form:errors path="articolo.ristorante" class="error"/></td>
 			</tr>
 
 			<tr>
@@ -128,9 +128,10 @@
 				<!-- format date using dd/MM/yyyy pattern -->
 				<fmt:formatDate value="${nea.articolo.data}" var="date" pattern="dd/MM/yyyy" />
 				
-				<td><form:input path="articolo.data" placeholder="dd/MM/yyyy"
-						size="12" value="${date}"></form:input>
-						
+				<!-- datepicker -->
+				<td> <form:input path="articolo.data" value="${date}" id="datepicker"
+					placeholder="DD/MM/YYYY" class="form-control" readonly="true"></form:input> </td>
+
 				<td><form:errors path="articolo.data" cssClass="error"/></td>
 			</tr>
 			
@@ -155,8 +156,7 @@
 						<c:forEach var="voto" items="${nea.listaVoto}">
 							<c:choose>
 								<c:when test="${voto.ID==nea.articolo.IDVoto}">
-									<form:option value="${voto.ID}" selected="selected">
-										${voto.nome}</form:option>
+									<form:option value="${voto.ID}" selected="selected">${voto.nome}</form:option>
 								</c:when>
 								<c:otherwise>
 									<form:option value="${voto.ID}">${voto.nome}</form:option>

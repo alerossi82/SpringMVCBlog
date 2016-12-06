@@ -23,14 +23,14 @@ import models.NewEditArticolo;
 public class ArticleManagerController {
 	
 	//use InitBinder to define date format
-	@InitBinder
+	/*@InitBinder
 	public void customizeBinding (WebDataBinder binder) {
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); //set date format
 		dateFormat.setLenient(false); //match exactly date format
 		CustomDateEditor dateEditor = new CustomDateEditor(dateFormat, true);
 		binder.registerCustomEditor(Date.class, dateEditor); 
-	}
+	}*/
 	
 	@RequestMapping (value="/ArticleManager", method= RequestMethod.GET)
 	
@@ -64,7 +64,7 @@ public class ArticleManagerController {
 	public String editArticle (	Model model,
 								@Valid @ModelAttribute (value="nea") NewEditArticolo nea, //create NewEditArticolo object, autowire attributes from ArticleManager.jsp, add to model and validate
 							 	BindingResult result, //collect validation errors
-							 	@RequestParam (value="submit") String submit){ //get input value from ArticleManager.jsp
+							 	@RequestParam (value="submit") String submit) { //get input value from ArticleManager.jsp
 		
 		Articolo articolo1=nea.getArticolo();
 		

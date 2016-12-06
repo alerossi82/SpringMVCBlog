@@ -27,20 +27,30 @@
 <link href="${blogCSS}" rel="stylesheet" />
 
 <!-- JQuery -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
 
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ <link rel="stylesheet" href="/resources/demos/style.css">
+ <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- JAVASCRIPT -->
+
+<!-- sidebar -->
 <script>
-	/* JQuery function for sidebar */
 	/* the sidebar initially shows 3 articles only */
 	$(document).ready(function() {
+		
 		/* clicking on more, the full list is displayed, button more disappears and button less shows up */
 		$(".more").click(function() {
 			$(".more").hide();
 			$(".hidden_items").slideDown("slow");
 		});
-		/* clicking less, hidden_items hides and less hide, more shows up */
+		/* clicking less, hidden_items hides and button less hide, button more shows up */
 		$(".less").click(function() {
 			$(".hidden_items").hide();
 			$(".more").show();
@@ -48,10 +58,11 @@
 	});
 </script>
 
+<!-- datepicker -->
 <script>
 	$(document).ready(function() {
-		$("#user").click(function() {
-			$(".blog-nav-list").toggle();
+		$("#datepicker").datepicker({
+			dateFormat : "dd-mm-yy"
 		});
 	});
 </script>
