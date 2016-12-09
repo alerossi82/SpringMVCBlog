@@ -1,6 +1,9 @@
 /*
  * Globals
  */
+ 
+ 
+
 body {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	color: #555;
@@ -167,18 +170,16 @@ textarea {
 	font-size: 18px;
 	width: 800px;
 	height: 800px;
-	margin: 20px 0px 20px 0px
+	margin: 20px 0px 20px 0px;
 }
 
 .blog-nav-list {
-	list-style-type: none
+	list-style-type: none;
 }
 
 .hidden_list_item {
 	display: none;
 }
 
- .error { 
-        color: red; 
-		font-weight: bold; 
-    }
+.error{color:red;font-weight:bold;}
+

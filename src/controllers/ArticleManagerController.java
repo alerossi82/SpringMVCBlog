@@ -23,14 +23,15 @@ import models.NewEditArticolo;
 public class ArticleManagerController {
 	
 	//use InitBinder to define date format
-	/*@InitBinder
+	@InitBinder
 	public void customizeBinding (WebDataBinder binder) {
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); //set date format
 		dateFormat.setLenient(false); //match exactly date format
 		CustomDateEditor dateEditor = new CustomDateEditor(dateFormat, true);
 		binder.registerCustomEditor(Date.class, dateEditor); 
-	}*/
+		
+	}
 	
 	@RequestMapping (value="/ArticleManager", method= RequestMethod.GET)
 	

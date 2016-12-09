@@ -34,7 +34,7 @@ public class Articolo {
 	@Column (name="Data")
 	@NotNull (message="This field can not be empty")
 	//@Temporal (TemporalType.DATE) //date format used in SQL
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date data;
 	
 	@Column (name="Articolo")

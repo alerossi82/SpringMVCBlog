@@ -146,26 +146,71 @@
 			<tr>
 				<td><label> Stars </label></td>
 				
-				<td> <form:select path="articolo.IDVoto">
+				<td>
+				
+				<%--  <form:select path="articolo.IDVoto">
 				
 				<!-- first list item is empty -->
-				<form:option value="">---</form:option>
+				<form:option value="" style="font-family:wingdings">«¶---</form:option>
 				
 				<!-- for each object in nea.listVoto, checks the ID and adds the name to the select menu -->
 				<!-- if the ID of the object in listVoto matches the IDVoto of the article, it is set as selected -->
 						<c:forEach var="voto" items="${nea.listaVoto}">
 							<c:choose>
 								<c:when test="${voto.ID==nea.articolo.IDVoto}">
-									<form:option value="${voto.ID}" selected="selected">${voto.nome}</form:option>
+									<form:option value="${voto.ID}" selected="selected"><c:forEach begin="1" end="${voto.ID}">S</c:forEach></form:option>
 								</c:when>
 								<c:otherwise>
 									<form:option value="${voto.ID}">${voto.nome}</form:option>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
-				</form:select> </td>
+				</form:select> --%>
 				
-				<td><form:errors path="articolo.IDVoto" cssClass="error"/></td>
+				
+				<script>
+				$(document).ready(function(){
+					
+					$(".starselector").click(function(){
+						//prendpo il valore sul quale ho cliccato
+						var newVal = $(this).attr("data-val");
+						setStars(newVal);
+					});
+					
+					setStars(${nea.articolo.IDVoto});
+				});
+				
+				function setStars(newVal)
+				{	
+					$("#articolo_IDVoto").val(newVal);
+					
+					// svuoto tutte le stelle
+					$(".starselector").switchClass("glyphicon-star","glyphicon-star-empty");
+					
+					//riempio le stelle fino al valore selezionato
+					for (var i = 1; i <= newVal; i++) {
+						$(".starselector[data-val="+i+"]").switchClass("glyphicon-star-empty","glyphicon-star");
+					}
+				}
+				</script>
+				<style>
+				.starselector{cursor:pointer;}
+				</style>
+				
+				<span class="starselector glyphicon glyphicon-star-empty" aria-hidden="true" data-val="1"></span>
+				<span class="starselector glyphicon glyphicon-star-empty" aria-hidden="true" data-val="2"></span>
+				<span class="starselector glyphicon glyphicon-star-empty" aria-hidden="true" data-val="3"></span>
+				<span class="starselector glyphicon glyphicon-star-empty" aria-hidden="true" data-val="4"></span>
+				<span class="starselector glyphicon glyphicon-star-empty" aria-hidden="true" data-val="5"></span>
+				<input type="hidden" value="" name="articolo.IDVoto" id="articolo_IDVoto"/>
+	
+	
+				 </td>
+				
+				<td>
+				<form:errors path="articolo.IDVoto" cssClass="error"/>
+				
+				</td>
 			</tr>
 
 			<tr>
