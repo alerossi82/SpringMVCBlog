@@ -68,5 +68,55 @@
 	});
 </script>
 
+<!-- preview image -->
+<script>
+	$(document).ready(function() {
+		
+		//trigger event when selecting new img
+		$("#imgList").change(function() {
+			
+			//path where pics are stored
+			var str = "${pageContext.request.contextPath}/resources/img/";
+
+			//interate through all options and add selected img to var
+			$("#imgList option:selected").each(function() {
+				str = str + $(this).text();
+			});
+
+			//set img src = selected option
+			$("#imgPrev").attr("src", str);
+
+			//trigger the event
+		}).change();
+	});
+</script>
+
+<!-- star icons selector -->
+<script>
+				$(document).ready(function(){
+					
+					$(".starselector").click(function(){
+						
+						//prendpo il valore sul quale ho cliccato
+						var newVal = $(this).attr("data-val");
+						setStars(newVal);
+					});
+					
+					setStars(${nea.articolo.IDVoto});
+				});
+				
+				function setStars(newVal)
+				{	
+					$("#articolo_IDVoto").val(newVal);
+					
+					// svuoto tutte le stelle
+					$(".starselector").switchClass("glyphicon-star","glyphicon-star-empty");
+					
+					//riempio le stelle fino al valore selezionato
+					for (var i = 1; i <= newVal; i++) {
+						$(".starselector[data-val="+i+"]").switchClass("glyphicon-star-empty","glyphicon-star");
+					}
+				}
+</script>
 
 </head>
