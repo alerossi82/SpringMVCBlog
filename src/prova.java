@@ -63,19 +63,18 @@ public class prova {
 		List<Cucina> cucine = nea.getListaCucina();
 		for (Cucina c: cucine){
 			System.out.println(c.getID()+c.getNome());*/
-		
-		NewEditArticolo nea = new NewEditArticolo(8);
-		Date ladata= nea.getArticolo().getData();
-		String date = ladata.toString();
-		System.out.println(date);
-		
-		String regex = "(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)";
-		String test = date;
-		boolean testResult=Pattern.compile(regex).matcher(test).find();
-		System.out.println(testResult);
-		
-		DateValidator validator= new DateValidator();
 		//ConstraintValidatorContext ctx = null;
+		
+		String path="C:/Users/Alessandro/workspace/SpringMVCBlog/WebContent/resources/img/CIMG2401.JPG";
+		File file = new File(path);
+		System.out.println(path);
+
+		if(file.delete()){
+			System.out.println(file.getName() + " is deleted!");
+		}else{
+			System.out.println("Delete operation is failed.");
+		}
+
 		
 	}
 
