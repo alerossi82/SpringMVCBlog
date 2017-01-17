@@ -8,9 +8,11 @@
 			<a class="blog-nav-item" href="${pageContext.request.contextPath}/home">Home</a>
 			
 			<!-- LOGIN link -->
-			<a class="blog-nav-item"
-						href="${pageContext.request.contextPath}/login">Log-in </a>
-			
+			<sec:authorize access="!isAuthenticated()">
+				<a class="blog-nav-item"
+					href="${pageContext.request.contextPath}/login">Log-in </a>
+			</sec:authorize>
+
 			<!-- if logged user is Admin, display LOGOUT and ADMIN links -->
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<a class="blog-nav-item"

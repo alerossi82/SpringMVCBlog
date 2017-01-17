@@ -12,10 +12,6 @@
 	</div>
 
 	<div class="sidebar-module">
-		<p>
-			<input placeholder="search">
-		</p>
-		<br />
 		<h4>Articoli recenti</h4>
 
 		<!-- links to most recent articles -->

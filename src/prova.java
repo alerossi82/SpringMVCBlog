@@ -35,46 +35,9 @@ public class prova {
 
 	public static void main(String[] args) throws SQLException {
 		
-		/*DAOArticolo dao= new DAOArticolo();
-		Articolo art=dao.select(1035);
-		
-		Date date = art.getData();
-		DateFormat df = new SimpleDateFormat("dd MM yyyy");
-		String text = df.format(date);
-		System.out.println(text);
-		
-		Date date1 = null;
-		
-		try {
-			date1= df.parse(text);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		art.setData(date1);
-		
-		System.out.println(art.getData());*/
-		
-		
-		
-		//DAOArticolo daoArt= new DAOArticolo();
-		/*NewEditArticolo nea = new NewEditArticolo(0);
-		List<Cucina> cucine = nea.getListaCucina();
-		for (Cucina c: cucine){
-			System.out.println(c.getID()+c.getNome());*/
-		//ConstraintValidatorContext ctx = null;
-		
-		String path="C:/Users/Alessandro/workspace/SpringMVCBlog/WebContent/resources/img/CIMG2401.JPG";
-		File file = new File(path);
+		String path = new File("").getAbsolutePath();
 		System.out.println(path);
-
-		if(file.delete()){
-			System.out.println(file.getName() + " is deleted!");
-		}else{
-			System.out.println("Delete operation is failed.");
-		}
-
+		
 		
 	}
 

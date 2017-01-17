@@ -15,7 +15,7 @@
 	<!-- search all controllers in the defined package -->
 	<context:component-scan base-package="controllers" />
 	
-	<!-- define view resolver -->
+	<!-- view resolver -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">

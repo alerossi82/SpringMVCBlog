@@ -57,22 +57,6 @@ public class ArticoloRM {
 	}
 	
 	
-	
-/*	public ArticoloRM(int id, String ristorante, String area, String cucina, int voto, String prezzo, String data,
-			String articolo, String foto) {
-		super();
-		this.id = id;
-		this.ristorante = ristorante;
-		this.area = area;
-		this.cucina = cucina;
-		this.voto = voto;
-		this.prezzo = prezzo;
-		this.data = data;
-		this.articolo = articolo;
-		this.foto = foto;
-	}*/
-
-
 
 
 	//ACCESSORS

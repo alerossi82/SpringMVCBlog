@@ -11,14 +11,14 @@
 	<c:url var="loginUrl" value="/login" />
 	<form action="${loginUrl}" method="post">
 		
-		<!-- if login failed, dispaly error message -->
+		<!-- if login failed, display error message -->
 		<c:if test="${not empty error}">
-			<p>${error}</p>
+			<p class="text-danger">${error}</p>
 		</c:if>
 		
 		<!-- if logged out, display logout message -->
 		<c:if test="${not empty logout }">
-			<p>${logout}</p>
+			<p class="text-success">${logout}</p>
 		</c:if>
 
 		<h2>LOG-IN</h2>

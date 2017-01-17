@@ -11,8 +11,9 @@
 		all the URL patterns /admin** and /ArticleManager** are secured, and only the users having role 
 		ROLE_ADMIN can be authorized to access these URLs -->
 	<http auto-config="true">
-		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/ArticleManager**" access="hasRole('ROLE_ADMIN')" />
+	<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+	<intercept-url pattern="/ArticleManager**" access="hasRole('ROLE_ADMIN')" />
+	<intercept-url pattern="/imagesManager**" access="hasRole('ROLE_ADMIN')" />
 		
 		<!-- access denied page -->
 		<access-denied-handler error-page="/AccessDenied" />

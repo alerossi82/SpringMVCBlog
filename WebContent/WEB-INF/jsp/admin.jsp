@@ -32,4 +32,9 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<p>
+		<a href="${pageContext.request.contextPath}/imagesManager">
+		<h3>PHOTO MANAGER</h3></a>
+	</p>
 </t:ADMIN>
