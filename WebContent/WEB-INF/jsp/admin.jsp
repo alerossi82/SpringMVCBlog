@@ -13,13 +13,7 @@
 	</p> --%>
 	
 	<!-- display update/insert/delete message -->
-	<p>${message}</p>
-	
-	<!-- link to ArticleManagerController for new article -->
-	<p>
-		<a href="${pageContext.request.contextPath}/ArticleManager?IDarticolo=0"> 
-		<h3>INSERT NEW ARTICLE</h3> </a>
-	</p>
+	<p class="bg-warning">${message}</p>
 
 	<!-- from AdminController -->
 	<!-- cicle through advm.listAllArticoli to generate list of all articles -->
@@ -33,6 +27,13 @@
 		</c:forEach>
 	</table>
 	
+	<!-- link to ArticleManagerController for new article -->
+	<p>
+		<a href="${pageContext.request.contextPath}/ArticleManager?IDarticolo=0"> 
+		<h3>INSERT NEW ARTICLE</h3> </a>
+	</p>
+	
+	<!-- link to imagesManager -->
 	<p>
 		<a href="${pageContext.request.contextPath}/imagesManager">
 		<h3>PHOTO MANAGER</h3></a>

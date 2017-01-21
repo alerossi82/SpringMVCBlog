@@ -208,13 +208,16 @@
 			</tr>
 		</table>
 	</form:form>
-
-	<!-- button BACK moves back to view admin.jsp-->
-	<form action="${pageContext.request.contextPath}/admin">
+	
+	<!-- BACK button -->
 	<table>
-			<tr>
-				<td><input type="submit" value="BACK"></td>
-			</tr>
+		<tr>
+			<td>
+				<FORM>
+					<INPUT Type="button" VALUE="BACK"
+						onClick="history.go(-1);return true;">
+				</FORM>
+			</td>
+		</tr>
 	</table>
-	</form>
 </t:ADMIN>

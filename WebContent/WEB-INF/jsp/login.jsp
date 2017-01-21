@@ -27,11 +27,13 @@
 			<tr>
 				<td>USERNAME</td>
 				<td><input type="text" name="username" value="" /></td>
+				<td><p class="text-info">Alessandro</p></td>
 			</tr>
 
 			<tr>
 				<td>PASSWORD</td>
 				<td><input type="password" name="password" value="" /></td>
+				<td><p class="text-info">Aleprova</td>
 			</tr>
 
 			<tr>

@@ -83,7 +83,7 @@ public class ArticleManagerController {
 		
 		
 		switch (submit) {
-
+		
 		case "SUBMIT": {
 
 			// INSERT new article

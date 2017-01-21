@@ -44,7 +44,7 @@
 	</div>
 	<!-- /.blog-post -->
 
-	<!-- Back button, return to the home page stored in session -->
+	<!-- Back button, return to the page stored in session -->
 	<nav>
 	<ul class="pager">
 		<li><a href="${pageContext.request.contextPath}/home?page=${sessionScope.page}">Back</a></li>

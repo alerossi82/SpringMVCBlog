@@ -52,15 +52,4 @@
 		</authentication-provider>
 	</authentication-manager>
 
-
-        
-        <!-- DEPRECATED -->
-<!-- 	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="admin" password="nimda" authorities="ROLE_ADMIN" />
-			</user-service>
-		</authentication-provider>
-	</authentication-manager> -->
-
 </beans:beans>

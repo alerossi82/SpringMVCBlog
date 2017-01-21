@@ -102,5 +102,11 @@
 		</form>
 
 	</table>
+	
+	<!-- display message for validation, succesfull upload or delete -->
+	<p class="bg-warning">${message}</p>
+	
+	<!-- BACK button -->
+	<FORM><INPUT Type="button" VALUE="BACK" onClick="history.go(-1);return true;"></FORM>
 
 </t:ADMIN>

@@ -90,6 +90,7 @@ public class DAOArticoloRM {
 												.createCriteria(ArticoloRM.class)
 												.setFirstResult(skip)	//skip n rows
 												.setMaxResults(take)	//take n rows
+												.addOrder(Order.desc("id"))
 												.list();
 
 		session1.getTransaction().commit();
